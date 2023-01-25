@@ -1,25 +1,24 @@
-import { useEffect, useState } from "react";
-import axios from "axios";
+import { ThemeProvider, createTheme } from "@mui/material/styles";
+import CssBaseline from "@mui/material/CssBaseline";
 
 import "./App.css";
+import InterviewsTable from "./Components/InterviewsTable";
+
+const darkTheme = createTheme({
+  palette: {
+    mode: "dark",
+  },
+});
 
 function App() {
-  const [listOfInterviews, setListOfInterviews] = useState([]);
-
-  useEffect(() => {
-    axios.get("http://localhost:3001/Interviews").then((response) => {
-      console.log(response.data);
-      const interviews = response.data;
-      setListOfInterviews(interviews);
-    });
-  }, []);
-
   return (
-    <div className="App">
-      {listOfInterviews.map((value, key) => (
-        <li key={key}>{value.jobTitle}</li>
-      ))}
-    </div>
+    <ThemeProvider theme={darkTheme}>
+      <CssBaseline />
+      <div className="App">
+        <h1>hello</h1>
+        <InterviewsTable />
+      </div>
+    </ThemeProvider>
   );
 }
 
