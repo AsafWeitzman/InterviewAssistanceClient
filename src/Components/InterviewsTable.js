@@ -55,18 +55,23 @@ function TextInTheBox({ row }) {
 
 function Row({ row }) {
   const [open, setOpen] = useState(false);
+  const { comment, whatWentWell, whatCanBeImproved, actionItems } = row;
+  const shouldExpand =
+    comment || whatCanBeImproved || whatWentWell || actionItems;
 
   return (
     <React.Fragment>
       <TableRow sx={{ "& > *": { borderBottom: "unset" } }}>
         <TableCell>
-          <IconButton
-            aria-label="expand row"
-            size="small"
-            onClick={() => setOpen(!open)}
-          >
-            {open ? <KeyboardArrowUpIcon /> : <KeyboardArrowDownIcon />}
-          </IconButton>
+          {shouldExpand && (
+            <IconButton
+              aria-label="expand row"
+              size="small"
+              onClick={() => setOpen(!open)}
+            >
+              {open ? <KeyboardArrowUpIcon /> : <KeyboardArrowDownIcon />}
+            </IconButton>
+          )}
         </TableCell>
         <TableCell component="th" scope="row">
           {row.companyName}
