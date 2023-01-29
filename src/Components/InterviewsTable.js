@@ -124,6 +124,6 @@ export default function InterviewsTable() {
       </Table>
     </TableContainer>
   ) : (
-    <h1>miss interviews</h1>
+    <h1>Miss Interviews</h1>
   );
 }

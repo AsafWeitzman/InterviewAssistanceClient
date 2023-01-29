@@ -1,8 +1,12 @@
 import { ThemeProvider, createTheme } from "@mui/material/styles";
 import CssBaseline from "@mui/material/CssBaseline";
+import { Route, Routes } from "react-router-dom";
 
-import "./App.css";
 import InterviewsTable from "./Components/InterviewsTable";
+import ResponsiveAppBar from "./Components/ResponsiveAppBar";
+import ClosedInterviewsTable from "./Components/ClosedInterviewsTable";
+import SuccessfulInterviewsTable from "./Components/SuccessfulInterviewsTable";
+import Home from "./Components/Home";
 
 const darkTheme = createTheme({
   palette: {
@@ -14,10 +18,19 @@ function App() {
   return (
     <ThemeProvider theme={darkTheme}>
       <CssBaseline />
-      <div className="App">
-        <h1>hello</h1>
-        <InterviewsTable />
-      </div>
+      <ResponsiveAppBar />
+      <Routes>
+        <Route path="/" element={<Home />}></Route>
+        <Route path="/interviews" element={<InterviewsTable />}></Route>
+        <Route
+          path="/closedInterviews"
+          element={<ClosedInterviewsTable />}
+        ></Route>
+        <Route
+          path="/successfulInterviews"
+          element={<SuccessfulInterviewsTable />}
+        ></Route>
+      </Routes>
     </ThemeProvider>
   );
 }
