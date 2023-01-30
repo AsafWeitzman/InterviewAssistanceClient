@@ -2,23 +2,24 @@ import { Typography } from "@mui/material";
 import { Box, Container } from "@mui/system";
 
 import { ReactComponent as InterviewManagerLogoAW } from "../assets/svg/InterviewManagerLogoAW.svg";
+import SignInForm from "./SignInForm";
 
 const SignIn = () => {
   return (
     <Container
-      fixed
       maxWidth="xxl"
       sx={{
         display: "flex",
         flexDirection: "row",
-        justifyContent: "space-between",
-        p: "10% 2% 0 0%",
+        justifyContent: "space-around",
+        p: "15% 2% 0 0%",
       }}
     >
       <Box
         sx={{
           display: { xs: "none", md: "flex" },
           flexDirection: "column",
+          pr: 2,
         }}
       >
         <InterviewManagerLogoAW
@@ -26,7 +27,7 @@ const SignIn = () => {
         />
         <div
           style={{
-            background: "rgba(255,255,255,0.5)",
+            background: "rgba(255,255,255,0.6)",
             borderRadius: "16px",
           }}
         >
@@ -46,15 +47,9 @@ const SignIn = () => {
           </Typography>
         </div>
       </Box>
-
-      <Box
-        sx={{
-          display: { xs: "none", md: "flex" },
-        }}
-      >
-        <h1>form</h1>
+      <Box sx={{ display: { xs: "none", md: "flex" }, pl: 2 }}>
+        <SignInForm />
       </Box>
-
       <Box
         sx={{
           display: { xs: "flex", md: "none" },
@@ -68,7 +63,7 @@ const SignIn = () => {
         />
         <div
           style={{
-            background: "rgba(255,255,255,0.5)",
+            background: "rgba(255,255,255,0.6)",
             borderRadius: "16px",
           }}
         >
@@ -85,7 +80,7 @@ const SignIn = () => {
             Empower your job search with our user-friendly application.
           </Typography>
         </div>
-        <h1>form</h1>
+        <SignInForm style={{ display: { xs: "flex", md: "none" } }} />
       </Box>
     </Container>
   );
