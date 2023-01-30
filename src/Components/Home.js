@@ -15,6 +15,7 @@ const divStyle = {
   objectFit: "contain",
 };
 
+//
 const Home = () => {
   return (
     <div role="img" aria-label="Background image" style={divStyle}>
