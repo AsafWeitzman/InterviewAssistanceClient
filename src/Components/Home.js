@@ -1,3 +1,4 @@
+import InterviewCard from "./AddInterview";
 import SignIn from "./SignIn";
 
 const backgroundImageUrl = "/Images/skyscraper_building_architecture2.jpg";
@@ -15,11 +16,11 @@ const divStyle = {
   objectFit: "contain",
 };
 
-//
 const Home = () => {
   return (
     <div role="img" aria-label="Background image" style={divStyle}>
-      <SignIn />
+      {/* <SignIn /> */}
+      <InterviewCard />
     </div>
   );
 };
