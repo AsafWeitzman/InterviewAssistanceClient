@@ -10,7 +10,7 @@ const pulse = keyframes`
     background-color: rgba(255,255,255,0.8);
   }
 `;
-
+//
 const Pulse = styled.div`
   padding: 8px 8px;
   border-radius: 8px;
