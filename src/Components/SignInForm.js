@@ -1,47 +1,8 @@
-import { Grid, TextField, Button, Link } from "@mui/material";
+import { Grid, Link } from "@mui/material";
 import { Box } from "@mui/system";
-import styled from "@emotion/styled";
-import { grey } from "@mui/material/colors";
 
-const CustomizedButton = styled(Button)(({ theme }) => ({
-  color: theme.palette.getContrastText(grey["A700"]),
-  backgroundColor: grey[600],
-  "&:hover": {
-    backgroundColor: grey[800],
-  },
-}));
-
-const CssTextField = styled(TextField)({
-  ".css-p51h6s-MuiInputBase-input-MuiOutlinedInput-input:-webkit-autofill": {
-    "-webkit-box-shadow": "0 0 0 0 inset",
-    "-webkit-text-fill-color": "black",
-    caretColor: "#fff",
-    borderRadius: "inherit",
-  },
-  ".MuiFormLabel-root": {
-    color: "black",
-  },
-  ".MuiInputBase-input": {
-    color: "black",
-  },
-  "& label.Mui-focused": {
-    color: "black",
-  },
-  "& .MuiInput-underline:after": {
-    borderBottomColor: "black",
-  },
-  "& .MuiOutlinedInput-root": {
-    "& fieldset": {
-      borderColor: "black",
-    },
-    "&:hover fieldset": {
-      borderColor: "grey",
-    },
-    "&.Mui-focused fieldset": {
-      borderColor: "black",
-    },
-  },
-});
+import CustomizedButton from "./CustomizedButton";
+import CustomizedTextField from "./CustomizedTextField";
 
 const SignInForm = () => {
   const handleSubmit = (event) => {
@@ -65,17 +26,17 @@ const SignInForm = () => {
         p: 2,
       }}
     >
-      <CssTextField
+      <CustomizedTextField
         margin="normal"
         required
         fullWidth
         id="email"
         label="Email Address"
         name="email"
-        autoComplete="email"
+        // autoComplete="email"
         autoFocus
       />
-      <CssTextField
+      <CustomizedTextField
         margin="normal"
         required
         fullWidth
