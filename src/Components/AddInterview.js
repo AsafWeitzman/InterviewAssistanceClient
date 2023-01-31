@@ -13,7 +13,7 @@ const InterviewCard = () => {
   const handleSubmit = (event) => {
     event.preventDefault();
     const data = new FormData(event.currentTarget);
-    console.log("test", {
+    console.log({
       companyName: data.get("companyName"),
       jobTitle: data.get("jobTitle"),
       step: data.get("step"),

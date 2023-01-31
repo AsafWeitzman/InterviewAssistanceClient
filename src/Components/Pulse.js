@@ -16,7 +16,6 @@ const Pulse = styled.div`
   text-align: center;
   animation: ${pulse} 2s ease-out;
   animation-iteration-count: ${(props) => {
-    console.log(props);
     return props.shouldPules ? "infinite" : "0";
   }};
 `;
