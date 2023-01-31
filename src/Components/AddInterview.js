@@ -1,4 +1,4 @@
-import { Button, Container, Grid, Typography } from "@mui/material";
+import { Container, Grid, Typography } from "@mui/material";
 import { Box } from "@mui/system";
 import React, { useState } from "react";
 
@@ -36,22 +36,16 @@ const InterviewCard = () => {
           m: "15% 0 0 0",
         }}
       >
-        <Box
-          sx={{
-            background: "rgba(255,255,255,0.6)",
-            borderRadius: "8px",
-            p: 1,
-          }}
-        >
-          {/* <Pulse> */}
-          <CustomizedButton
-            fullWidth
-            variant="contained"
-            onClick={handleAddInterviewButton}
-          >
-            Add an Interview
-          </CustomizedButton>
-          {/* </Pulse> */}
+        <Box>
+          <Pulse shouldPules={!showCard}>
+            <CustomizedButton
+              fullWidth
+              variant="contained"
+              onClick={handleAddInterviewButton}
+            >
+              Add an Interview
+            </CustomizedButton>
+          </Pulse>
         </Box>
         {showCard && (
           <Box
@@ -87,8 +81,6 @@ const InterviewCard = () => {
                     id="companyName"
                     label="Company Name"
                     name="companyName"
-                    // autoComplete="email"
-                    // autoFocus
                   />
                 </Box>
               </Grid>
@@ -100,8 +92,6 @@ const InterviewCard = () => {
                     id="jobTitle"
                     label="Job Title"
                     name="jobTitle"
-                    // autoComplete="email"
-                    // autoFocus
                   />
                 </Box>
               </Grid>
@@ -113,8 +103,6 @@ const InterviewCard = () => {
                     id="step"
                     label="Step"
                     name="step"
-                    // autoComplete="email"
-                    // autoFocus
                   />
                 </Box>
               </Grid>

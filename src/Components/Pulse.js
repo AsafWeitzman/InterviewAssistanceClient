@@ -10,13 +10,15 @@ const pulse = keyframes`
     background-color: rgba(255,255,255,0.8);
   }
 `;
-//
 const Pulse = styled.div`
-  padding: 8px 8px;
+  padding: 10px 10px;
   border-radius: 8px;
   text-align: center;
-  animation: ${pulse} 3s ease-in-out;
-  animation-iteration-count: infinite;
+  animation: ${pulse} 2s ease-out;
+  animation-iteration-count: ${(props) => {
+    console.log(props);
+    return props.shouldPules ? "infinite" : "0";
+  }};
 `;
 
 export default Pulse;
