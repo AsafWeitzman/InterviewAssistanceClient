@@ -23,12 +23,17 @@ const SignIn = () => {
         }}
       >
         <InterviewManagerLogoAW
-          style={{ display: { xs: "none", md: "flex" }, margin: "0 0 8px 0" }}
+          style={{
+            display: { xs: "none", md: "flex" },
+            margin: "0 0 8px 0",
+          }}
         />
         <div
           style={{
-            background: "rgba(255,255,255,0.6)",
+            background: "rgba(255,255,255,0.8)",
             borderRadius: "16px",
+            boxShadow:
+              "0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19)",
           }}
         >
           <Typography
@@ -47,7 +52,12 @@ const SignIn = () => {
           </Typography>
         </div>
       </Box>
-      <Box sx={{ display: { xs: "none", md: "flex" }, pl: 2 }}>
+      <Box
+        sx={{
+          display: { xs: "none", md: "flex" },
+          pl: 2,
+        }}
+      >
         <SignInForm />
       </Box>
       <Box

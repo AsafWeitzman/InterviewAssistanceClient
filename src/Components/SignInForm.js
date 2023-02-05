@@ -21,9 +21,11 @@ const SignInForm = () => {
       noValidate
       sx={{
         mt: 2,
-        background: "rgba(255,255,255,0.6)",
+        background: "rgba(255,255,255,0.8)",
         borderRadius: "16px",
         p: 2,
+        boxShadow:
+          "0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19)",
       }}
     >
       <CustomizedTextField

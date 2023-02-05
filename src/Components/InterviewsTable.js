@@ -14,6 +14,9 @@ import Paper from "@mui/material/Paper";
 import KeyboardArrowDownIcon from "@mui/icons-material/KeyboardArrowDown";
 import KeyboardArrowUpIcon from "@mui/icons-material/KeyboardArrowUp";
 
+import DeleteRowModal from "./DeleteRowModal";
+import EditRowModal from "./EditRowModal";
+
 function TextInTheBox({ row }) {
   const { comment, whatWentWell, whatCanBeImproved, ActionItems } = row;
   console.log(comment);
@@ -62,16 +65,20 @@ function Row({ row }) {
   return (
     <React.Fragment>
       <TableRow sx={{ "& > *": { borderBottom: "unset" } }}>
-        <TableCell>
-          {shouldExpand && (
-            <IconButton
-              aria-label="expand row"
-              size="small"
-              onClick={() => setOpen(!open)}
-            >
-              {open ? <KeyboardArrowUpIcon /> : <KeyboardArrowDownIcon />}
-            </IconButton>
-          )}
+        <TableCell align="left" padding="checkbox">
+          <Box sx={{ display: "flex" }}>
+            <EditRowModal interviewRow={row} />
+            <DeleteRowModal />
+            {shouldExpand && (
+              <IconButton
+                aria-label="expand row"
+                size="small"
+                onClick={() => setOpen(!open)}
+              >
+                {open ? <KeyboardArrowUpIcon /> : <KeyboardArrowDownIcon />}
+              </IconButton>
+            )}
+          </Box>
         </TableCell>
         <TableCell component="th" scope="row">
           {row.companyName}
@@ -105,7 +112,7 @@ export default function InterviewsTable() {
   }, []);
 
   return listOfInterviews.length ? (
-    <TableContainer component={Paper}>
+    <TableContainer component={Paper} sx={{ m: "10% 0 0 0" }}>
       <Table aria-label="collapsible table">
         <TableHead>
           <TableRow>
