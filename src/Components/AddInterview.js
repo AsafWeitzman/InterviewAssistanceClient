@@ -1,6 +1,7 @@
-import { Button, Container, Grid, Typography } from "@mui/material";
+import { Container, Grid, Typography } from "@mui/material";
 import { Box } from "@mui/system";
 import React, { useState } from "react";
+import axios from "axios";
 
 import CustomizedButton from "./CustomizedButton";
 import CustomizedTextField from "./CustomizedTextField";
@@ -12,12 +13,18 @@ const InterviewCard = () => {
 
   const handleSubmit = (event) => {
     event.preventDefault();
-    const data = new FormData(event.currentTarget);
-    console.log("test", {
-      companyName: data.get("companyName"),
-      jobTitle: data.get("jobTitle"),
-      step: data.get("step"),
-      dateAndTime: data.get("dateAndTime"),
+    const formData = new FormData(event.currentTarget);
+    const data = {
+      companyName: formData.get("companyName"),
+      jobTitle: formData.get("jobTitle"),
+      step: formData.get("step"),
+      dateAndTime: formData.get("dateAndTime"),
+      userEmail: "user556@gmail.com",
+    };
+
+    console.log("data: ", data);
+    axios.post("http://localhost:3001/", data).then((response) => {
+      console.log("response: ", response);
     });
   };
 
@@ -36,22 +43,16 @@ const InterviewCard = () => {
           m: "15% 0 0 0",
         }}
       >
-        <Box
-          sx={{
-            background: "rgba(255,255,255,0.6)",
-            borderRadius: "8px",
-            p: 1,
-          }}
-        >
-          {/* <Pulse> */}
-          <CustomizedButton
-            fullWidth
-            variant="contained"
-            onClick={handleAddInterviewButton}
-          >
-            Add an Interview
-          </CustomizedButton>
-          {/* </Pulse> */}
+        <Box>
+          <Pulse shouldPules={!showCard}>
+            <CustomizedButton
+              fullWidth
+              variant="contained"
+              onClick={handleAddInterviewButton}
+            >
+              Add an Interview
+            </CustomizedButton>
+          </Pulse>
         </Box>
         {showCard && (
           <Box
@@ -61,6 +62,8 @@ const InterviewCard = () => {
               borderRadius: "16px",
               p: 1,
               m: 2,
+              boxShadow:
+                "0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19)",
             }}
             component="form"
             onSubmit={handleSubmit}
@@ -87,8 +90,6 @@ const InterviewCard = () => {
                     id="companyName"
                     label="Company Name"
                     name="companyName"
-                    // autoComplete="email"
-                    // autoFocus
                   />
                 </Box>
               </Grid>
@@ -100,8 +101,6 @@ const InterviewCard = () => {
                     id="jobTitle"
                     label="Job Title"
                     name="jobTitle"
-                    // autoComplete="email"
-                    // autoFocus
                   />
                 </Box>
               </Grid>
@@ -113,8 +112,6 @@ const InterviewCard = () => {
                     id="step"
                     label="Step"
                     name="step"
-                    // autoComplete="email"
-                    // autoFocus
                   />
                 </Box>
               </Grid>
