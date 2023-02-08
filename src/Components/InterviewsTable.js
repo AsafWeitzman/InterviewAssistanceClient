@@ -1,5 +1,6 @@
 import axios from "axios";
 import React, { useEffect, useState } from "react";
+import { useNavigate } from "react-router-dom";
 import Box from "@mui/material/Box";
 import Collapse from "@mui/material/Collapse";
 import IconButton from "@mui/material/IconButton";
@@ -13,12 +14,14 @@ import Typography from "@mui/material/Typography";
 import Paper from "@mui/material/Paper";
 import KeyboardArrowDownIcon from "@mui/icons-material/KeyboardArrowDown";
 import KeyboardArrowUpIcon from "@mui/icons-material/KeyboardArrowUp";
+import OpenInNewIcon from "@mui/icons-material/OpenInNew";
 
 import DeleteRowModal from "./DeleteRowModal";
 import EditRowModal from "./EditRowModal";
+import Status from "./Status";
 
 function TextInTheBox({ row }) {
-  const { comment, whatWentWell, whatCanBeImproved, ActionItems } = row;
+  const { comment, whatWentWell, whatCanBeImproved, actionItems } = row;
   console.log(comment);
   return (
     <>
@@ -44,21 +47,23 @@ function TextInTheBox({ row }) {
       <Typography variant="h6" gutterBottom component="div">
         {whatCanBeImproved}
       </Typography>
-      {ActionItems && (
+      {actionItems && (
         <Typography variant="h5" gutterBottom component="div">
           Action Items:
         </Typography>
       )}
       <Typography variant="h6" gutterBottom component="div">
-        {ActionItems}
+        {actionItems}
       </Typography>
     </>
   );
 }
 
-function Row({ row }) {
+function Row({ row, setListOfInterviews, listOfInterviews }) {
   const [open, setOpen] = useState(false);
-  const { comment, whatWentWell, whatCanBeImproved, actionItems } = row;
+  const navigate = useNavigate();
+
+  const { id, comment, whatWentWell, whatCanBeImproved, actionItems } = row;
   const shouldExpand =
     comment || whatCanBeImproved || whatWentWell || actionItems;
 
@@ -67,8 +72,25 @@ function Row({ row }) {
       <TableRow sx={{ "& > *": { borderBottom: "unset" } }}>
         <TableCell align="left" padding="checkbox">
           <Box sx={{ display: "flex" }}>
-            <EditRowModal interviewRow={row} />
-            <DeleteRowModal />
+            <DeleteRowModal
+              interviewId={id}
+              listOfInterviews={listOfInterviews}
+              setListOfInterviews={setListOfInterviews}
+            />
+            <EditRowModal
+              interviewRow={row}
+              listOfInterviews={listOfInterviews}
+              setListOfInterviews={setListOfInterviews}
+            />
+            <IconButton
+              aria-label="expand row"
+              size="small"
+              onClick={() => {
+                navigate(`/interviews/byId/${row.id}`);
+              }}
+            >
+              <OpenInNewIcon />
+            </IconButton>
             {shouldExpand && (
               <IconButton
                 aria-label="expand row"
@@ -85,7 +107,9 @@ function Row({ row }) {
         </TableCell>
         <TableCell align="left">{row.jobTitle}</TableCell>
         <TableCell align="left">{row.step}</TableCell>
-        <TableCell align="left">{row.status}</TableCell>
+        <TableCell align="left">
+          <Status step={row.step} />
+        </TableCell>
       </TableRow>
       <TableRow>
         <TableCell style={{ paddingBottom: 0, paddingTop: 0 }} colSpan={6}>
@@ -125,7 +149,12 @@ export default function InterviewsTable() {
         </TableHead>
         <TableBody>
           {listOfInterviews.map((interview) => (
-            <Row key={interview.id} row={interview} />
+            <Row
+              key={interview.id}
+              row={interview}
+              listOfInterviews={listOfInterviews}
+              setListOfInterviews={setListOfInterviews}
+            />
           ))}
         </TableBody>
       </Table>
