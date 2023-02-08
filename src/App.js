@@ -7,6 +7,7 @@ import ResponsiveAppBar from "./Components/ResponsiveAppBar";
 import ClosedInterviewsTable from "./Components/ClosedInterviewsTable";
 import SuccessfulInterviewsTable from "./Components/SuccessfulInterviewsTable";
 import Home from "./Components/Home";
+import Interview from "./Components/Interview";
 
 const darkTheme = createTheme({
   palette: {
@@ -22,6 +23,7 @@ function App() {
       <Routes>
         <Route path="/" element={<Home />}></Route>
         <Route path="/interviews" element={<InterviewsTable />}></Route>
+        <Route path="/interviews/byId/:id" element={<Interview />}></Route>
         <Route
           path="/closedInterviews"
           element={<ClosedInterviewsTable />}

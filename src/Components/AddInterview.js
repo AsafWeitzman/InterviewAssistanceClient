@@ -1,15 +1,38 @@
-import { Container, Grid, Typography } from "@mui/material";
+import { Container, Grid, MenuItem, Snackbar, Typography } from "@mui/material";
 import { Box } from "@mui/system";
 import React, { useState } from "react";
 import axios from "axios";
 
 import CustomizedButton from "./CustomizedButton";
 import CustomizedTextField from "./CustomizedTextField";
-import LinearWithValueLabel from "./LinearWithValueLabel";
 import Pulse from "./Pulse";
+import { STEPS } from "../utils/constants";
+import { calculateStatus } from "../utils/common";
 
 const InterviewCard = () => {
   const [showCard, setShowCard] = useState(false);
+  const [companyNameValue, setCompanyNameValue] = useState("");
+  const [jobTitleValue, setJobTitleValue] = useState("");
+  const [stepValue, setStepValue] = useState("");
+  const [dateAndTimeValue, setDateAndTimeValue] = useState("");
+
+  //snackbar logic
+  const [openSnackBar, setOpenSnackBar] = useState(false);
+  const [snackbarContent, setSnackbarContent] = useState(null);
+
+  const handleCloseSnackBar = (event, reason) => {
+    if (reason === "clickaway") {
+      return;
+    }
+    setOpenSnackBar(false);
+  };
+
+  const resetInputValues = () => {
+    setCompanyNameValue("");
+    setJobTitleValue("");
+    setStepValue("");
+    setDateAndTimeValue("");
+  };
 
   const handleSubmit = (event) => {
     event.preventDefault();
@@ -19,13 +42,27 @@ const InterviewCard = () => {
       jobTitle: formData.get("jobTitle"),
       step: formData.get("step"),
       dateAndTime: formData.get("dateAndTime"),
+      status: calculateStatus(formData.get("step")),
       userEmail: "user556@gmail.com",
     };
 
     console.log("data: ", data);
-    axios.post("http://localhost:3001/", data).then((response) => {
-      console.log("response: ", response);
-    });
+
+    axios.post("http://localhost:3001/", data).then(
+      (response) => {
+        console.log("response: ", response);
+        resetInputValues();
+
+        //snackbar logic
+        setSnackbarContent("Your interview was saved!");
+        setOpenSnackBar(true);
+      },
+      () => {
+        //snackbar logic
+        setSnackbarContent("An unknown error accurred during interview save.");
+        setOpenSnackBar(true);
+      }
+    );
   };
 
   const handleAddInterviewButton = () => {
@@ -87,9 +124,13 @@ const InterviewCard = () => {
                   <CustomizedTextField
                     required
                     fullWidth
+                    value={companyNameValue}
                     id="companyName"
                     label="Company Name"
                     name="companyName"
+                    onChange={(e) => {
+                      setCompanyNameValue(e.target.value);
+                    }}
                   />
                 </Box>
               </Grid>
@@ -98,21 +139,42 @@ const InterviewCard = () => {
                   <CustomizedTextField
                     required
                     fullWidth
+                    value={jobTitleValue}
                     id="jobTitle"
                     label="Job Title"
                     name="jobTitle"
+                    onChange={(e) => {
+                      setJobTitleValue(e.target.value);
+                    }}
                   />
                 </Box>
               </Grid>
               <Grid item lg={3} md={3} sm={3} xs={3}>
                 <Box sx={{ m: 1 }}>
                   <CustomizedTextField
-                    required
+                    sx={{
+                      "& .MuiSvgIcon-root": {
+                        color: "black",
+                      },
+                    }}
+                    filled
                     fullWidth
+                    required
+                    select
+                    value={stepValue}
                     id="step"
                     label="Step"
                     name="step"
-                  />
+                    onChange={(e) => {
+                      setStepValue(e.target.value);
+                    }}
+                  >
+                    {Object.keys(STEPS).map((key, index) => (
+                      <MenuItem key={index} value={STEPS[key]}>
+                        {STEPS[key]}
+                      </MenuItem>
+                    ))}
+                  </CustomizedTextField>
                 </Box>
               </Grid>
               <Grid item lg={3} md={3} sm={3} xs={3}>
@@ -120,6 +182,7 @@ const InterviewCard = () => {
                   <CustomizedTextField
                     required
                     fullWidth
+                    value={dateAndTimeValue}
                     id="dateAndTime"
                     label="Date & Time"
                     name="dateAndTime"
@@ -127,13 +190,14 @@ const InterviewCard = () => {
                     InputLabelProps={{
                       shrink: true,
                     }}
+                    onChange={(e) => {
+                      setDateAndTimeValue(e.target.value);
+                    }}
                   />
                 </Box>
               </Grid>
               <Grid container justifyContent="flex-end">
-                <Grid item lg={6} md={6} sm={6} xs={6}>
-                  <Box sx={{ m: 1 }}>{/* <LinearWithValueLabel /> */}</Box>
-                </Grid>
+                <Grid item lg={6} md={6} sm={6} xs={6}></Grid>
                 <Grid item lg={3} md={3} sm={3} xs={3}>
                   <Box sx={{ m: 1 }}>
                     <CustomizedButton
@@ -151,6 +215,7 @@ const InterviewCard = () => {
                       fullWidth
                       variant="contained"
                       onClick={() => {
+                        resetInputValues();
                         setShowCard(false);
                       }}
                     >
@@ -162,6 +227,12 @@ const InterviewCard = () => {
             </Grid>
           </Box>
         )}
+        <Snackbar
+          open={openSnackBar}
+          autoHideDuration={3000}
+          onClose={handleCloseSnackBar}
+          message={snackbarContent}
+        />
       </Container>
     </>
   );

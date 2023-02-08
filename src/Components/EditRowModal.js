@@ -3,11 +3,14 @@ import Box from "@mui/material/Box";
 import Button from "@mui/material/Button";
 import Typography from "@mui/material/Typography";
 import Modal from "@mui/material/Modal";
-import { Grid, IconButton, TextField } from "@mui/material";
+import { Grid, IconButton, MenuItem, TextField } from "@mui/material";
 import ModeEditOutlineOutlinedIcon from "@mui/icons-material/ModeEditOutlineOutlined";
 import ModeEditIcon from "@mui/icons-material/ModeEdit";
-import CustomizedTextField from "./CustomizedTextField";
 import styled from "@emotion/styled";
+
+import { STEPS } from "../utils/constants";
+import { calculateStatus } from "../utils/common";
+import axios from "axios";
 
 const CustomizedTextFieldDateTime = styled(TextField)({
   ".css-p51h6s-MuiInputBase-input-MuiOutlinedInput-input::-webkit-calendar-picker-indicator":
@@ -35,23 +38,14 @@ const GRID_SIZE_3 = 3;
 const GRID_SIZE_6 = 6;
 const GRID_SIZE_12 = 12;
 
-export default function EditRowModal({ interviewRow }) {
+export default function EditRowModal({
+  interviewRow,
+  listOfInterviews,
+  setListOfInterviews,
+}) {
   const [open, setOpen] = useState(false);
   const handleOpen = () => setOpen(true);
   const handleClose = () => setOpen(false);
-
-  const handleSubmit = (event) => {
-    event.preventDefault();
-    const data = new FormData(event.currentTarget);
-    console.log({
-      companyName: data.get("companyName"),
-      jobTitle: data.get("jobTitle"),
-    });
-    setTimeout(() => {
-      handleClose(!open);
-      console.log("row updated");
-    }, 1000);
-  };
 
   const {
     id,
@@ -65,6 +59,43 @@ export default function EditRowModal({ interviewRow }) {
     whatCanBeImproved,
     actionItems,
   } = interviewRow;
+
+  const [stepValue, setStepValue] = useState(step);
+  const [statusValue, setStatusValue] = useState(status);
+
+  const updateInterviewList = (id, data) => {
+    setListOfInterviews(
+      listOfInterviews.map((interview) =>
+        interview.id === id ? { ...interview, ...data } : interview
+      )
+    );
+  };
+
+  const handleSubmit = (event) => {
+    event.preventDefault();
+    const formData = new FormData(event.currentTarget);
+    const data = {
+      companyName: formData.get("companyName"),
+      jobTitle: formData.get("jobTitle"),
+      step: formData.get("step"),
+      status: formData.get("status"),
+      dateAndTime: formData.get("dateAndTime"),
+      comment: formData.get("comment"),
+      whatWentWell: formData.get("whatWentWell"),
+      whatCanBeImproved: formData.get("whatCanBeImproved"),
+      actionItems: formData.get("actionItems"),
+    };
+
+    axios.put(`http://localhost:3001/edit/${id}`, data).then(
+      (response) => {
+        handleClose(!open);
+        updateInterviewList(id, data);
+      },
+      (e) => {
+        console.log("Oh no: " + e);
+      }
+    );
+  };
 
   return (
     <div>
@@ -144,11 +175,24 @@ export default function EditRowModal({ interviewRow }) {
               <Box sx={boxStyle}>
                 <TextField
                   fullWidth
+                  required
+                  select
+                  value={stepValue && stepValue}
                   id="stepEdit"
                   label="Step"
                   name="step"
-                  defaultValue={step && step}
-                />
+                  onChange={(e) => {
+                    setStepValue(e.target.value);
+                    const newStatus = calculateStatus(e.target.value);
+                    setStatusValue(newStatus);
+                  }}
+                >
+                  {Object.keys(STEPS).map((key, index) => (
+                    <MenuItem key={index} value={STEPS[key]}>
+                      {STEPS[key]}
+                    </MenuItem>
+                  ))}
+                </TextField>
               </Box>
             </Grid>
             <Grid
@@ -164,7 +208,7 @@ export default function EditRowModal({ interviewRow }) {
                   id="statusEdit"
                   label="Status"
                   name="status"
-                  defaultValue={status && status}
+                  value={statusValue && statusValue}
                 />
               </Box>
             </Grid>
@@ -274,7 +318,7 @@ export default function EditRowModal({ interviewRow }) {
             variant="outlined"
             sx={{ m: "16px 8px 0 0" }}
             color="error"
-            onClick={handleSubmit}
+            onClick={handleClose}
           >
             Exit
           </Button>
