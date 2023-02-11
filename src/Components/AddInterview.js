@@ -2,6 +2,7 @@ import { Container, Grid, MenuItem, Snackbar, Typography } from "@mui/material";
 import { Box } from "@mui/system";
 import React, { useState } from "react";
 import axios from "axios";
+import { motion } from "framer-motion";
 
 import CustomizedButton from "./CustomizedButton";
 import CustomizedTextField from "./CustomizedTextField";
@@ -9,7 +10,7 @@ import Pulse from "./Pulse";
 import { STEPS } from "../utils/constants";
 import { calculateStatus } from "../utils/common";
 
-const InterviewCard = () => {
+const AddInterview = ({ style }) => {
   const [showCard, setShowCard] = useState(false);
   const [companyNameValue, setCompanyNameValue] = useState("");
   const [jobTitleValue, setJobTitleValue] = useState("");
@@ -77,7 +78,7 @@ const InterviewCard = () => {
           display: "flex",
           flexDirection: "column",
           alignItems: "center",
-          m: "15% 0 0 0",
+          ...style,
         }}
       >
         <Box>
@@ -105,7 +106,13 @@ const InterviewCard = () => {
             component="form"
             onSubmit={handleSubmit}
           >
-            <Grid container>
+            <Grid
+              container
+              component={motion.div}
+              initial={{ opacity: 0 }}
+              animate={{ opacity: 1 }}
+              transition={{ duration: 0.3 }}
+            >
               <Grid item xs={12}>
                 <Box sx={{ m: 1 }}>
                   <Typography
@@ -237,4 +244,4 @@ const InterviewCard = () => {
     </>
   );
 };
-export default InterviewCard;
+export default AddInterview;

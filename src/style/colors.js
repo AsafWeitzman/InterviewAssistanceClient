@@ -3,4 +3,7 @@ export const COLORS = Object.freeze({
   PALE_CORNFLOWER_BLUE: "#AED6F1",
   MINT: "#82E0AA",
   ROMANTIC_ORANGE: "#FFCCBC",
+  DEEP_BLUE_1: "#001F41",
+  DEEP_BLUE_2: "#00486F",
+  AZURE: "#6BA7D4",
 });

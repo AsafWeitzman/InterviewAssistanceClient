@@ -15,6 +15,7 @@ import Paper from "@mui/material/Paper";
 import KeyboardArrowDownIcon from "@mui/icons-material/KeyboardArrowDown";
 import KeyboardArrowUpIcon from "@mui/icons-material/KeyboardArrowUp";
 import OpenInNewIcon from "@mui/icons-material/OpenInNew";
+import { motion } from "framer-motion";
 
 import DeleteRowModal from "./DeleteRowModal";
 import EditRowModal from "./EditRowModal";
@@ -124,6 +125,11 @@ function Row({ row, setListOfInterviews, listOfInterviews }) {
   );
 }
 
+const list = {
+  visible: { opacity: 1 },
+  hidden: { opacity: 0 },
+};
+
 export default function InterviewsTable() {
   const [listOfInterviews, setListOfInterviews] = useState([]);
 
@@ -136,8 +142,14 @@ export default function InterviewsTable() {
   }, []);
 
   return listOfInterviews.length ? (
-    <TableContainer component={Paper} sx={{ m: "10% 0 0 0" }}>
-      <Table aria-label="collapsible table">
+    <TableContainer component={Paper} block>
+      <Table
+        aria-label="collapsible table"
+        component={motion.div}
+        initial="hidden"
+        animate="visible"
+        variants={list}
+      >
         <TableHead>
           <TableRow>
             <TableCell />

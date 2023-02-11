@@ -1,5 +1,6 @@
 import { Typography } from "@mui/material";
 import { Box } from "@mui/system";
+import { motion } from "framer-motion";
 
 import { STEPS } from "../utils/constants";
 import { COLORS } from "../style/colors";
@@ -13,7 +14,12 @@ const textBackgroundStyle = {
 
 const AppliedBox = () => {
   return (
-    <Box>
+    <Box
+      component={motion.div}
+      initial={{ opacity: 0, scale: 0.4 }}
+      animate={{ opacity: 1, scale: 1 }}
+      transition={{ duration: 0.4 }}
+    >
       <Typography
         variant="body2"
         sx={{
@@ -29,7 +35,12 @@ const AppliedBox = () => {
 
 const InProgressBox = () => {
   return (
-    <Box>
+    <Box
+      component={motion.div}
+      initial={{ opacity: 0, scale: 0.5 }}
+      animate={{ opacity: 1, scale: 1 }}
+      transition={{ duration: 0.5 }}
+    >
       <Typography
         variant="body2"
         sx={{
@@ -45,7 +56,12 @@ const InProgressBox = () => {
 
 const OfferBox = () => {
   return (
-    <Box>
+    <Box
+      component={motion.div}
+      initial={{ opacity: 0, scale: 0.1 }}
+      animate={{ opacity: 1, scale: 1 }}
+      transition={{ duration: 0.7 }}
+    >
       <Typography
         variant="body2"
         sx={{
@@ -61,7 +77,12 @@ const OfferBox = () => {
 
 const EndedBox = () => {
   return (
-    <Box>
+    <Box
+      component={motion.div}
+      initial={{ opacity: 0, scale: 0.2 }}
+      animate={{ opacity: 1, scale: 1 }}
+      transition={{ duration: 0.6 }}
+    >
       <Typography
         variant="body2"
         sx={{
