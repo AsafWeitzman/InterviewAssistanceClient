@@ -1,9 +1,10 @@
-import InterviewCard from "./AddInterview";
+import AddInterview from "./AddInterview";
 import SignIn from "./SignIn";
 
 const backgroundImageUrl = "/Images/skyscraper_building_architecture2.jpg";
 
 const divStyle = {
+  position: "fixed",
   backgroundImage: `url(${backgroundImageUrl})`,
   backgroundPosition: "center",
   backgroundSize: "cover",
@@ -16,11 +17,15 @@ const divStyle = {
   objectFit: "contain",
 };
 
+const marginStyle = {
+  margin: "10%",
+};
+
 const Home = () => {
   return (
     <div role="img" aria-label="Background image" style={divStyle}>
-      {/* <SignIn /> */}
-      <InterviewCard />
+      {/* <SignIn style={marginStyle} /> */}
+      <AddInterview style={marginStyle} />
     </div>
   );
 };

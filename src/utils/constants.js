@@ -16,3 +16,10 @@ export const STATUSES = Object.freeze({
   OFFER: "Offer",
   ENDED: "Ended",
 });
+
+export const RETRO_TITLES = Object.freeze({
+  COMMENT: "COMMENT",
+  WHAT_WENT_WELL: "WHAT WENT WELL",
+  WHAT_CAN_BE_IMPROVED: "WHAT CAN BE IMPROVED",
+  ACTION_ITEMS: "ACTION ITEMS",
+});

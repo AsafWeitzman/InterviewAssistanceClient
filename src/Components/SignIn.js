@@ -4,7 +4,7 @@ import { Box, Container } from "@mui/system";
 import { ReactComponent as InterviewManagerLogoAW } from "../assets/svg/InterviewManagerLogoAW.svg";
 import SignInForm from "./SignInForm";
 
-const SignIn = () => {
+const SignIn = ({ style }) => {
   return (
     <Container
       maxWidth="xxl"
@@ -12,7 +12,7 @@ const SignIn = () => {
         display: "flex",
         flexDirection: "row",
         justifyContent: "space-around",
-        p: "15% 2% 0 0%",
+        ...style,
       }}
     >
       <Box
