@@ -32,7 +32,9 @@ export default function DeleteRowModal({
 
   const deleteInterview = (interviewId) => {
     axios
-      .delete(`http://localhost:3001/interviews/delete/${interviewId}`)
+      .delete(`http://localhost:3001/interviews/delete/${interviewId}`, {
+        headers: { accessToken: localStorage.getItem("accessToken") },
+      })
       .then((response) => {
         handleClose();
       });

@@ -86,15 +86,19 @@ export default function EditRowModal({
       actionItems: formData.get("actionItems"),
     };
 
-    axios.put(`http://localhost:3001/edit/${id}`, data).then(
-      (response) => {
-        handleClose(!open);
-        updateInterviewList(id, data);
-      },
-      (e) => {
-        console.log("Oh no: " + e);
-      }
-    );
+    axios
+      .put(`http://localhost:3001/edit/${id}`, data, {
+        headers: { accessToken: localStorage.getItem("accessToken") },
+      })
+      .then(
+        (response) => {
+          handleClose(!open);
+          updateInterviewList(id, data);
+        },
+        (e) => {
+          console.log("Oh no: " + e);
+        }
+      );
   };
 
   return (
