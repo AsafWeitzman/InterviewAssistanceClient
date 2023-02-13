@@ -34,14 +34,29 @@ function App() {
               </ProtectedRoute>
             }
           ></Route>
-          <Route path="/interviews/byId/:id" element={<Interview />}></Route>
+          <Route
+            path="/interviews/byId/:id"
+            element={
+              <ProtectedRoute>
+                <Interview />
+              </ProtectedRoute>
+            }
+          ></Route>
           <Route
             path="/closedInterviews"
-            element={<ClosedInterviewsTable />}
+            element={
+              <ProtectedRoute>
+                <ClosedInterviewsTable />
+              </ProtectedRoute>
+            }
           ></Route>
           <Route
             path="/successfulInterviews"
-            element={<SuccessfulInterviewsTable />}
+            element={
+              <ProtectedRoute>
+                <SuccessfulInterviewsTable />
+              </ProtectedRoute>
+            }
           ></Route>
           <Route path="*" element={<PageNotFound />}></Route>
         </Routes>
