@@ -44,26 +44,33 @@ const AddInterview = ({ style }) => {
       step: formData.get("step"),
       dateAndTime: formData.get("dateAndTime"),
       status: calculateStatus(formData.get("step")),
-      userEmail: "user556@gmail.com",
     };
 
     console.log("data: ", data);
 
-    axios.post("http://localhost:3001/", data).then(
-      (response) => {
-        console.log("response: ", response);
-        resetInputValues();
+    axios
+      .post("http://localhost:3001/", data, {
+        headers: {
+          accessToken: localStorage.getItem("accessToken"),
+        },
+      })
+      .then(
+        (response) => {
+          console.log("response: ", response);
+          resetInputValues();
 
-        //snackbar logic
-        setSnackbarContent("Your interview was saved!");
-        setOpenSnackBar(true);
-      },
-      () => {
-        //snackbar logic
-        setSnackbarContent("An unknown error accurred during interview save.");
-        setOpenSnackBar(true);
-      }
-    );
+          //snackbar logic
+          setSnackbarContent("Your interview was saved!");
+          setOpenSnackBar(true);
+        },
+        () => {
+          //snackbar logic
+          setSnackbarContent(
+            "An unknown error accurred during interview save."
+          );
+          setOpenSnackBar(true);
+        }
+      );
   };
 
   const handleAddInterviewButton = () => {

@@ -8,6 +8,9 @@ import ClosedInterviewsTable from "./Components/ClosedInterviewsTable";
 import SuccessfulInterviewsTable from "./Components/SuccessfulInterviewsTable";
 import Home from "./Components/Home";
 import Interview from "./Components/Interview";
+import { AuthContextProvider } from "./context/AuthContext";
+import ProtectedRoute from "./Components/ProtectedRoute";
+import PageNotFound from "./Components/PageNotFound";
 
 const darkTheme = createTheme({
   palette: {
@@ -19,20 +22,30 @@ function App() {
   return (
     <ThemeProvider theme={darkTheme}>
       <CssBaseline />
-      <ResponsiveAppBar />
-      <Routes>
-        <Route path="/" element={<Home />}></Route>
-        <Route path="/interviews" element={<InterviewsTable />}></Route>
-        <Route path="/interviews/byId/:id" element={<Interview />}></Route>
-        <Route
-          path="/closedInterviews"
-          element={<ClosedInterviewsTable />}
-        ></Route>
-        <Route
-          path="/successfulInterviews"
-          element={<SuccessfulInterviewsTable />}
-        ></Route>
-      </Routes>
+      <AuthContextProvider>
+        <ResponsiveAppBar />
+        <Routes>
+          <Route path="/" element={<Home />}></Route>
+          <Route
+            path="/interviews"
+            element={
+              <ProtectedRoute>
+                <InterviewsTable />
+              </ProtectedRoute>
+            }
+          ></Route>
+          <Route path="/interviews/byId/:id" element={<Interview />}></Route>
+          <Route
+            path="/closedInterviews"
+            element={<ClosedInterviewsTable />}
+          ></Route>
+          <Route
+            path="/successfulInterviews"
+            element={<SuccessfulInterviewsTable />}
+          ></Route>
+          <Route path="*" element={<PageNotFound />}></Route>
+        </Routes>
+      </AuthContextProvider>
     </ThemeProvider>
   );
 }

@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from "react";
 import axios from "axios";
-import { useNavigate, useParams } from "react-router-dom";
+import { useParams } from "react-router-dom";
 import { styled } from "@mui/material/styles";
 import Card from "@mui/material/Card";
 import CardHeader from "@mui/material/CardHeader";
@@ -11,7 +11,6 @@ import ExpandMoreIcon from "@mui/icons-material/ExpandMore";
 import { Grid } from "@mui/material";
 import { motion } from "framer-motion";
 
-import { COLORS } from "../style/colors";
 import RetroCard from "./RetroCard";
 import { RETRO_TITLES } from "../utils/constants";
 
@@ -29,7 +28,6 @@ const ExpandMore = styled((props) => {
 const Interview = () => {
   let { id } = useParams();
   const [interviewObject, setInterviewObject] = useState({});
-  const navigate = useNavigate();
 
   const {
     companyName,
@@ -54,7 +52,9 @@ const Interview = () => {
 
   useEffect(() => {
     axios
-      .get(`http://localhost:3001/interviews/byId/${id}`)
+      .get(`http://localhost:3001/interviews/byId/${id}`, {
+        headers: { accessToken: localStorage.getItem("accessToken") },
+      })
       .then((response) => {
         setInterviewObject(response.data);
       });

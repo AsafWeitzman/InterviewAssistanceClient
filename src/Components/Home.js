@@ -1,5 +1,7 @@
 import AddInterview from "./AddInterview";
 import SignIn from "./SignIn";
+import { useContext } from "react";
+import { AuthContext } from "../context/AuthContext";
 
 const backgroundImageUrl = "/Images/skyscraper_building_architecture2.jpg";
 
@@ -22,10 +24,15 @@ const marginStyle = {
 };
 
 const Home = () => {
+  const { authState } = useContext(AuthContext);
+
   return (
     <div role="img" aria-label="Background image" style={divStyle}>
-      {/* <SignIn style={marginStyle} /> */}
-      <AddInterview style={marginStyle} />
+      {authState.status ? (
+        <AddInterview style={marginStyle} />
+      ) : (
+        <SignIn style={marginStyle} />
+      )}
     </div>
   );
 };

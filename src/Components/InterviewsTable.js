@@ -134,11 +134,20 @@ export default function InterviewsTable() {
   const [listOfInterviews, setListOfInterviews] = useState([]);
 
   useEffect(() => {
-    axios.get("http://localhost:3001/interviews").then((response) => {
-      console.log(response.data);
-      const interviews = response.data;
-      setListOfInterviews(interviews);
-    });
+    axios
+      .get("http://localhost:3001/interviews", {
+        headers: {
+          accessToken: localStorage.getItem("accessToken"),
+        },
+      })
+      .then((response) => {
+        if (response.data.error) {
+          console.log(response.data.error);
+        } else {
+          const interviews = response.data;
+          setListOfInterviews(interviews);
+        }
+      });
   }, []);
 
   return listOfInterviews.length ? (
@@ -171,7 +180,5 @@ export default function InterviewsTable() {
         </TableBody>
       </Table>
     </TableContainer>
-  ) : (
-    <h1>Miss Interviews</h1>
-  );
+  ) : null;
 }
