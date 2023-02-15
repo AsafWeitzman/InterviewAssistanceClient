@@ -114,7 +114,9 @@ const Status = ({ step }) => {
       return <InProgressBox />;
     case STEPS.OFFER:
       return <OfferBox />;
-    case STEPS.ENDED:
+    case STEPS.ENDED_GOOD:
+      return <EndedBox />;
+    case STEPS.ENDED_BAD:
       return <EndedBox />;
   }
 };

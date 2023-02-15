@@ -18,7 +18,9 @@ export const calculateStatus = (step) => {
       return STATUSES.IN_PROGRESS;
     case STEPS.OFFER:
       return STATUSES.OFFER;
-    case STEPS.ENDED:
-      return STATUSES.ENDED;
+    case STEPS.ENDED_GOOD:
+      return STATUSES.ENDED_GOOD;
+    case STEPS.ENDED_BAD:
+      return STATUSES.ENDED_BAD;
   }
 };

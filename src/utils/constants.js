@@ -7,14 +7,16 @@ export const STEPS = Object.freeze({
   RECOMMENDATIONS: "Recommendations", // in process
   SALARY_NEGOTIATION: "Salary negotiation", // in process
   OFFER: "Offer", // offer
-  ENDED: "Ended", // ended
+  ENDED_GOOD: "Ended (Good reason)", // ended
+  ENDED_BAD: "Ended (Bad reason)", // ended
 });
 
 export const STATUSES = Object.freeze({
   APPLIED: "Applied",
   IN_PROGRESS: "In progress",
   OFFER: "Offer",
-  ENDED: "Ended",
+  ENDED_GOOD: "Ended good",
+  ENDED_BAD: "Ended bad",
 });
 
 export const RETRO_TITLES = Object.freeze({

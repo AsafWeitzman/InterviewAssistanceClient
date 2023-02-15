@@ -1,4 +1,8 @@
 const SuccessfulInterviewsTable = () => {
-  return <h1>Successful Interviews Table</h1>;
+  return (
+    <div>
+      <h1>Successful Interviews Table</h1>
+    </div>
+  );
 };
 export default SuccessfulInterviewsTable;
