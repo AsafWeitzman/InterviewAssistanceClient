@@ -2,10 +2,13 @@ import axios from "axios";
 import { createContext, useEffect, useState } from "react";
 
 export const AuthContext = createContext({
-  authState: false,
+  authState: {
+    id: 0,
+    userName: "",
+    email: "",
+    status: false,
+  },
   setAuthState: () => {},
-  user: null,
-  setUser: () => {},
 });
 
 export function AuthContextProvider({ children }) {
@@ -37,7 +40,7 @@ export function AuthContextProvider({ children }) {
       });
   }, []);
 
-  console.log("authState: ", authState);
+  console.log("AuthContext- authState: ", authState);
 
   return (
     <AuthContext.Provider value={{ authState, setAuthState }}>

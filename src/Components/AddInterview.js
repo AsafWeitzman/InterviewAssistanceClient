@@ -46,8 +46,6 @@ const AddInterview = ({ style }) => {
       status: calculateStatus(formData.get("step")),
     };
 
-    console.log("data: ", data);
-
     axios
       .post("http://localhost:3001/", data, {
         headers: {
@@ -56,7 +54,6 @@ const AddInterview = ({ style }) => {
       })
       .then(
         (response) => {
-          console.log("response: ", response);
           resetInputValues();
 
           //snackbar logic

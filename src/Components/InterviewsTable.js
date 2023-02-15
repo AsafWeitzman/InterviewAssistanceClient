@@ -23,7 +23,6 @@ import Status from "./Status";
 
 function TextInTheBox({ row }) {
   const { comment, whatWentWell, whatCanBeImproved, actionItems } = row;
-  console.log(comment);
   return (
     <>
       {comment && (
@@ -142,7 +141,7 @@ export default function InterviewsTable() {
       })
       .then((response) => {
         if (response.data.error) {
-          console.log(response.data.error);
+          console.log("interviewTable response: ", response.data.error);
         } else {
           const interviews = response.data;
           setListOfInterviews(interviews);
