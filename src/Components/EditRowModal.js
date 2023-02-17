@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useContext, useState } from "react";
 import Box from "@mui/material/Box";
 import Button from "@mui/material/Button";
 import Typography from "@mui/material/Typography";
@@ -8,9 +8,10 @@ import ModeEditOutlineOutlinedIcon from "@mui/icons-material/ModeEditOutlineOutl
 import ModeEditIcon from "@mui/icons-material/ModeEdit";
 import styled from "@emotion/styled";
 
-import { STATUSES, STEPS } from "../utils/constants";
+import { STEPS } from "../utils/constants";
 import { calculateStatus } from "../utils/common";
 import axios from "axios";
+import { InterviewsContext } from "../context/InterviewsContext";
 
 const CustomizedTextFieldDateTime = styled(TextField)({
   ".css-p51h6s-MuiInputBase-input-MuiOutlinedInput-input::-webkit-calendar-picker-indicator":
@@ -38,14 +39,12 @@ const GRID_SIZE_3 = 3;
 const GRID_SIZE_6 = 6;
 const GRID_SIZE_12 = 12;
 
-export default function EditRowModal({
-  interviewRow,
-  listOfInterviews,
-  setListOfInterviews,
-}) {
+export default function EditRowModal({ interviewRow }) {
   const [open, setOpen] = useState(false);
   const handleOpen = () => setOpen(true);
   const handleClose = () => setOpen(false);
+  const { listOfInterviews, setListOfInterviews } =
+    useContext(InterviewsContext);
 
   const {
     id,
@@ -65,16 +64,9 @@ export default function EditRowModal({
 
   const updateInterviewList = (id, data) => {
     setListOfInterviews(
-      listOfInterviews
-        .map((interview) =>
-          interview.id === id ? { ...interview, ...data } : interview
-        )
-        .filter((interview) => {
-          return (
-            interview.status !== STATUSES.ENDED_BAD &&
-            interview.status !== STATUSES.ENDED_GOOD
-          );
-        })
+      listOfInterviews.map((interview) =>
+        interview.id === id ? { ...interview, ...data } : interview
+      )
     );
   };
 
