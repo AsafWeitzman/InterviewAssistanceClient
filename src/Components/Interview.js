@@ -72,8 +72,6 @@ const Interview = () => {
     >
       <CardHeader
         sx={{
-          // backgroundImage: "linear-gradient(to bottom right, #342343, #614E71)",
-          // backgroundImage: `linear-gradient(to bottom right, ${COLORS.DEEP_BLUE_1}, ${COLORS.DEEP_BLUE_2})`,
           backgroundImage: `linear-gradient(to bottom right, #1E1E1E, #474554)`,
         }}
         title={`${jobTitle} Interview (${companyName})`}
