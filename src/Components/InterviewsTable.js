@@ -20,6 +20,7 @@ import { motion } from "framer-motion";
 import DeleteRowModal from "./DeleteRowModal";
 import EditRowModal from "./EditRowModal";
 import Status from "./Status";
+import { STATUSES } from "../utils/constants";
 
 function TextInTheBox({ row }) {
   const { comment, whatWentWell, whatCanBeImproved, actionItems } = row;
@@ -144,40 +145,58 @@ export default function InterviewsTable() {
           console.log("interviewTable response: ", response.data.error);
         } else {
           const interviews = response.data;
-          setListOfInterviews(interviews);
+          setListOfInterviews(
+            interviews.filter((interview) => {
+              return (
+                interview.status !== STATUSES.ENDED_BAD &&
+                interview.status !== STATUSES.ENDED_GOOD
+              );
+            })
+          );
         }
       });
   }, []);
 
-  return listOfInterviews.length ? (
-    <TableContainer component={Paper} block>
-      <Table
-        aria-label="collapsible table"
-        component={motion.div}
-        initial="hidden"
-        animate="visible"
-        variants={list}
-      >
-        <TableHead>
-          <TableRow>
-            <TableCell />
-            <TableCell>Company Name</TableCell>
-            <TableCell align="left">Job Title</TableCell>
-            <TableCell align="left">Step</TableCell>
-            <TableCell align="left">Status</TableCell>
-          </TableRow>
-        </TableHead>
-        <TableBody>
-          {listOfInterviews.map((interview) => (
-            <Row
-              key={interview.id}
-              row={interview}
-              listOfInterviews={listOfInterviews}
-              setListOfInterviews={setListOfInterviews}
-            />
-          ))}
-        </TableBody>
-      </Table>
-    </TableContainer>
-  ) : null;
+  return (
+    <>
+      <Typography variant="h4" sx={{ m: "16px", textAlign: "center" }}>
+        Open Interviews
+      </Typography>
+      {listOfInterviews.length ? (
+        <TableContainer
+          component={Paper}
+          sx={{ m: "0 5% 5% 5%", width: "90%" }}
+          block
+        >
+          <Table
+            aria-label="collapsible table"
+            component={motion.div}
+            initial="hidden"
+            animate="visible"
+            variants={list}
+          >
+            <TableHead>
+              <TableRow>
+                <TableCell />
+                <TableCell>Company Name</TableCell>
+                <TableCell align="left">Job Title</TableCell>
+                <TableCell align="left">Step</TableCell>
+                <TableCell align="left">Status</TableCell>
+              </TableRow>
+            </TableHead>
+            <TableBody>
+              {listOfInterviews.map((interview) => (
+                <Row
+                  key={interview.id}
+                  row={interview}
+                  listOfInterviews={listOfInterviews}
+                  setListOfInterviews={setListOfInterviews}
+                />
+              ))}
+            </TableBody>
+          </Table>
+        </TableContainer>
+      ) : null}
+    </>
+  );
 }

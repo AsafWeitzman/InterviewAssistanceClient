@@ -8,7 +8,7 @@ import ModeEditOutlineOutlinedIcon from "@mui/icons-material/ModeEditOutlineOutl
 import ModeEditIcon from "@mui/icons-material/ModeEdit";
 import styled from "@emotion/styled";
 
-import { STEPS } from "../utils/constants";
+import { STATUSES, STEPS } from "../utils/constants";
 import { calculateStatus } from "../utils/common";
 import axios from "axios";
 
@@ -65,9 +65,16 @@ export default function EditRowModal({
 
   const updateInterviewList = (id, data) => {
     setListOfInterviews(
-      listOfInterviews.map((interview) =>
-        interview.id === id ? { ...interview, ...data } : interview
-      )
+      listOfInterviews
+        .map((interview) =>
+          interview.id === id ? { ...interview, ...data } : interview
+        )
+        .filter((interview) => {
+          return (
+            interview.status !== STATUSES.ENDED_BAD &&
+            interview.status !== STATUSES.ENDED_GOOD
+          );
+        })
     );
   };
 
@@ -310,7 +317,6 @@ export default function EditRowModal({
               </Box>
             </Grid>
           </Grid>
-          {/* modal here */}
           <Button
             variant="outlined"
             sx={boxStyle}
