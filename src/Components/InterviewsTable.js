@@ -1,5 +1,5 @@
 import axios from "axios";
-import React, { useEffect, useState } from "react";
+import React, { useContext, useState } from "react";
 import { useNavigate } from "react-router-dom";
 import Box from "@mui/material/Box";
 import Collapse from "@mui/material/Collapse";
@@ -21,6 +21,7 @@ import DeleteRowModal from "./DeleteRowModal";
 import EditRowModal from "./EditRowModal";
 import Status from "./Status";
 import { STATUSES } from "../utils/constants";
+import { InterviewsContext } from "../context/InterviewsContext";
 
 function TextInTheBox({ row }) {
   const { comment, whatWentWell, whatCanBeImproved, actionItems } = row;
@@ -131,31 +132,8 @@ const list = {
 };
 
 export default function InterviewsTable() {
-  const [listOfInterviews, setListOfInterviews] = useState([]);
-
-  useEffect(() => {
-    axios
-      .get("http://localhost:3001/interviews", {
-        headers: {
-          accessToken: localStorage.getItem("accessToken"),
-        },
-      })
-      .then((response) => {
-        if (response.data.error) {
-          console.log("interviewTable response: ", response.data.error);
-        } else {
-          const interviews = response.data;
-          setListOfInterviews(
-            interviews.filter((interview) => {
-              return (
-                interview.status !== STATUSES.ENDED_BAD &&
-                interview.status !== STATUSES.ENDED_GOOD
-              );
-            })
-          );
-        }
-      });
-  }, []);
+  const { listOfInterviews, setListOfInterviews } =
+    useContext(InterviewsContext);
 
   return (
     <>
@@ -185,14 +163,19 @@ export default function InterviewsTable() {
               </TableRow>
             </TableHead>
             <TableBody>
-              {listOfInterviews.map((interview) => (
-                <Row
-                  key={interview.id}
-                  row={interview}
-                  listOfInterviews={listOfInterviews}
-                  setListOfInterviews={setListOfInterviews}
-                />
-              ))}
+              {listOfInterviews.map((interview) => {
+                return (
+                  interview.status !== STATUSES.ENDED_BAD &&
+                  interview.status !== STATUSES.ENDED_GOOD && (
+                    <Row
+                      key={interview.id}
+                      row={interview}
+                      listOfInterviews={listOfInterviews}
+                      setListOfInterviews={setListOfInterviews}
+                    />
+                  )
+                );
+              })}
             </TableBody>
           </Table>
         </TableContainer>

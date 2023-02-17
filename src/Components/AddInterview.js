@@ -1,6 +1,6 @@
 import { Container, Grid, MenuItem, Snackbar, Typography } from "@mui/material";
 import { Box } from "@mui/system";
-import React, { useState } from "react";
+import React, { useContext, useState } from "react";
 import axios from "axios";
 import { motion } from "framer-motion";
 
@@ -9,6 +9,7 @@ import CustomizedTextField from "./CustomizedTextField";
 import Pulse from "./Pulse";
 import { STEPS } from "../utils/constants";
 import { calculateStatus } from "../utils/common";
+import { InterviewsContext } from "../context/InterviewsContext";
 
 const AddInterview = ({ style }) => {
   const [showCard, setShowCard] = useState(false);
@@ -16,6 +17,7 @@ const AddInterview = ({ style }) => {
   const [jobTitleValue, setJobTitleValue] = useState("");
   const [stepValue, setStepValue] = useState("");
   const [dateAndTimeValue, setDateAndTimeValue] = useState("");
+  const { fetchDataToggle, setFetchDataToggle } = useContext(InterviewsContext);
 
   //snackbar logic
   const [openSnackBar, setOpenSnackBar] = useState(false);
@@ -45,7 +47,6 @@ const AddInterview = ({ style }) => {
       dateAndTime: formData.get("dateAndTime"),
       status: calculateStatus(formData.get("step")),
     };
-
     axios
       .post("http://localhost:3001/", data, {
         headers: {
@@ -59,6 +60,7 @@ const AddInterview = ({ style }) => {
           //snackbar logic
           setSnackbarContent("Your interview was saved!");
           setOpenSnackBar(true);
+          setFetchDataToggle(!fetchDataToggle);
         },
         () => {
           //snackbar logic

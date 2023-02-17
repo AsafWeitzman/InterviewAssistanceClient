@@ -11,6 +11,7 @@ import Interview from "./Components/Interview";
 import { AuthContextProvider } from "./context/AuthContext";
 import ProtectedRoute from "./Components/ProtectedRoute";
 import PageNotFound from "./Components/PageNotFound";
+import { InterviewsContextProvider } from "./context/InterviewsContext";
 
 const darkTheme = createTheme({
   palette: {
@@ -23,43 +24,45 @@ function App() {
     <ThemeProvider theme={darkTheme}>
       <CssBaseline />
       <AuthContextProvider>
-        <ResponsiveAppBar />
-        <Routes>
-          <Route path="/" element={<Home />}></Route>
-          <Route
-            path="/interviews"
-            element={
-              <ProtectedRoute>
-                <InterviewsTable />
-              </ProtectedRoute>
-            }
-          ></Route>
-          <Route
-            path="/interviews/byId/:id"
-            element={
-              <ProtectedRoute>
-                <Interview />
-              </ProtectedRoute>
-            }
-          ></Route>
-          <Route
-            path="/closedInterviews"
-            element={
-              <ProtectedRoute>
-                <ClosedInterviewsTable />
-              </ProtectedRoute>
-            }
-          ></Route>
-          <Route
-            path="/successfulInterviews"
-            element={
-              <ProtectedRoute>
-                <SuccessfulInterviewsTable />
-              </ProtectedRoute>
-            }
-          ></Route>
-          <Route path="*" element={<PageNotFound />}></Route>
-        </Routes>
+        <InterviewsContextProvider>
+          <ResponsiveAppBar />
+          <Routes>
+            <Route path="/" element={<Home />}></Route>
+            <Route
+              path="/interviews"
+              element={
+                <ProtectedRoute>
+                  <InterviewsTable />
+                </ProtectedRoute>
+              }
+            ></Route>
+            <Route
+              path="/interviews/byId/:id"
+              element={
+                <ProtectedRoute>
+                  <Interview />
+                </ProtectedRoute>
+              }
+            ></Route>
+            <Route
+              path="/closedInterviews"
+              element={
+                <ProtectedRoute>
+                  <ClosedInterviewsTable />
+                </ProtectedRoute>
+              }
+            ></Route>
+            <Route
+              path="/successfulInterviews"
+              element={
+                <ProtectedRoute>
+                  <SuccessfulInterviewsTable />
+                </ProtectedRoute>
+              }
+            ></Route>
+            <Route path="*" element={<PageNotFound />}></Route>
+          </Routes>
+        </InterviewsContextProvider>
       </AuthContextProvider>
     </ThemeProvider>
   );
