@@ -75,7 +75,7 @@ const Interview = () => {
           backgroundImage: `linear-gradient(to bottom right, #1E1E1E, #474554)`,
         }}
         title={`${jobTitle} Interview (${companyName})`}
-        subheader={dateAndTime && ts.toLocaleString()} // TODO: date format
+        subheader={dateAndTime && ts.toLocaleString()}
         action={
           shouldExpand && (
             <ExpandMore
@@ -89,29 +89,6 @@ const Interview = () => {
           )
         }
       />
-      {/* <CardContent>
-        <Button
-          variant="outlined"
-          startIcon={<ArrowBackIcon />}
-          onClick={() => {
-            navigate("/interviews");
-          }}
-        >
-          Back
-        </Button>
-      </CardContent> */}
-      {/* <CardActions disableSpacing>
-        {shouldExpand && (
-          <ExpandMore
-            expand={expanded}
-            onClick={handleExpandClick}
-            aria-expanded={expanded}
-            aria-label="show more"
-          >
-            <ExpandMoreIcon />
-          </ExpandMore>
-        )}
-      </CardActions> */}
       <Collapse in={expanded} timeout="auto" unmountOnExit>
         <CardContent>
           <Grid container spacing={2}>

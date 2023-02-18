@@ -69,6 +69,8 @@ function Row({ row, setListOfInterviews, listOfInterviews }) {
   const shouldExpand =
     comment || whatCanBeImproved || whatWentWell || actionItems;
 
+  const ts = new Date(row.dateAndTime);
+
   return (
     <React.Fragment>
       <TableRow sx={{ "& > *": { borderBottom: "unset" } }}>
@@ -112,6 +114,7 @@ function Row({ row, setListOfInterviews, listOfInterviews }) {
         <TableCell align="left">
           <Status step={row.step} />
         </TableCell>
+        <TableCell align="left">{ts.toLocaleString()}</TableCell>
       </TableRow>
       <TableRow>
         <TableCell style={{ paddingBottom: 0, paddingTop: 0 }} colSpan={6}>
@@ -160,6 +163,7 @@ export default function InterviewsTable() {
                 <TableCell align="left">Job Title</TableCell>
                 <TableCell align="left">Step</TableCell>
                 <TableCell align="left">Status</TableCell>
+                <TableCell align="left">Date And Time</TableCell>
               </TableRow>
             </TableHead>
             <TableBody>

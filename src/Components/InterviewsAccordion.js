@@ -5,6 +5,8 @@ import AccordionDetails from "@mui/material/AccordionDetails";
 import Typography from "@mui/material/Typography";
 import ExpandMoreIcon from "@mui/icons-material/ExpandMore";
 import { Divider, Grid } from "@mui/material";
+import { motion } from "framer-motion";
+
 import DeleteRowModal from "./DeleteRowModal";
 import EditRowModal from "./EditRowModal";
 import { InterviewsContext } from "../context/InterviewsContext";
@@ -26,17 +28,25 @@ const InterviewsAccordion = ({ endedStatus, style }) => {
       {listOfInterviews.map((interview) => {
         return (
           interview.status === endedStatus && (
-            <Accordion key={interview.id}>
+            <Accordion
+              key={interview.id}
+              component={motion.div}
+              initial={{ opacity: 0 }}
+              animate={{ opacity: 1 }}
+              transition={{ duration: 0.3 }}
+            >
               <AccordionSummary
                 expandIcon={<ExpandMoreIcon />}
                 aria-controls="panel1a-content"
                 id="panel1a-header"
               >
-                <Typography
-                  variant="h5"
-                  sx={{ pr: "16px" }}
-                >{`${interview.companyName} - ${interview.jobTitle}`}</Typography>
-                <Status step={interview.step} />
+                <div style={{ display: "flex", alignItems: "center" }}>
+                  <Typography
+                    variant="h5"
+                    sx={{ pr: "16px" }}
+                  >{`${interview.companyName} - ${interview.jobTitle}`}</Typography>
+                  <Status step={interview.step} />
+                </div>
               </AccordionSummary>
               <AccordionDetails>
                 <div
