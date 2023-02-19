@@ -7,11 +7,13 @@ import CustomizedButton from "./CustomizedButton";
 import CustomizedTextField from "./CustomizedTextField";
 import SignUpModal from "./SignUpModal";
 import { AuthContext } from "../context/AuthContext";
+import { InterviewsContext } from "../context/InterviewsContext";
 
 const SignInForm = () => {
   const [emailValue, setEmailValue] = useState("");
   const [passwordValue, setPasswordValue] = useState("");
   const { authState, setAuthState } = useContext(AuthContext);
+  const { fetchDataToggle, setFetchDataToggle } = useContext(InterviewsContext);
 
   const resetValues = () => {
     setEmailValue("");
@@ -45,6 +47,7 @@ const SignInForm = () => {
               email: response.data.email,
               status: true,
             });
+            setFetchDataToggle(!fetchDataToggle);
           }
           resetValues();
         },

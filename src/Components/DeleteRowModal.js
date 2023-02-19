@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useContext } from "react";
 import Box from "@mui/material/Box";
 import Button from "@mui/material/Button";
 import Typography from "@mui/material/Typography";
@@ -7,6 +7,7 @@ import { IconButton } from "@mui/material";
 import DeleteForeverIcon from "@mui/icons-material/DeleteForever";
 import DeleteForeverOutlinedIcon from "@mui/icons-material/DeleteForeverOutlined";
 import axios from "axios";
+import { InterviewsContext } from "../context/InterviewsContext";
 
 const style = {
   position: "absolute",
@@ -21,14 +22,12 @@ const style = {
   borderRadius: "8px",
 };
 
-export default function DeleteRowModal({
-  interviewId,
-  listOfInterviews,
-  setListOfInterviews,
-}) {
+export default function DeleteRowModal({ interviewId }) {
   const [open, setOpen] = React.useState(false);
   const handleOpen = () => setOpen(true);
   const handleClose = () => setOpen(false);
+  const { listOfInterviews, setListOfInterviews } =
+    useContext(InterviewsContext);
 
   const deleteInterview = (interviewId) => {
     axios
