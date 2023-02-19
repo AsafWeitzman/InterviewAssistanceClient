@@ -1,4 +1,3 @@
-import axios from "axios";
 import React, { useContext, useState } from "react";
 import { useNavigate } from "react-router-dom";
 import Box from "@mui/material/Box";
@@ -76,16 +75,8 @@ function Row({ row, setListOfInterviews, listOfInterviews }) {
       <TableRow sx={{ "& > *": { borderBottom: "unset" } }}>
         <TableCell align="left" padding="checkbox">
           <Box sx={{ display: "flex" }}>
-            <DeleteRowModal
-              interviewId={id}
-              listOfInterviews={listOfInterviews}
-              setListOfInterviews={setListOfInterviews}
-            />
-            <EditRowModal
-              interviewRow={row}
-              listOfInterviews={listOfInterviews}
-              setListOfInterviews={setListOfInterviews}
-            />
+            <DeleteRowModal interviewId={id} />
+            <EditRowModal interviewRow={row} />
             <IconButton
               aria-label="expand row"
               size="small"
@@ -171,12 +162,7 @@ export default function InterviewsTable() {
                 return (
                   interview.status !== STATUSES.ENDED_BAD &&
                   interview.status !== STATUSES.ENDED_GOOD && (
-                    <Row
-                      key={interview.id}
-                      row={interview}
-                      listOfInterviews={listOfInterviews}
-                      setListOfInterviews={setListOfInterviews}
-                    />
+                    <Row key={interview.id} row={interview} />
                   )
                 );
               })}
