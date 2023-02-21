@@ -11,10 +11,11 @@ import Avatar from "@mui/material/Avatar";
 import Button from "@mui/material/Button";
 import Tooltip from "@mui/material/Tooltip";
 import MenuItem from "@mui/material/MenuItem";
-import AdbIcon from "@mui/icons-material/Adb";
 import { Link } from "react-router-dom";
+import { motion } from "framer-motion";
 
 import { AuthContext } from "../context/AuthContext";
+import { ReactComponent as Logo55X40 } from "../assets/svg/Logo55X40.svg";
 
 const pages = ["Open Processes", "Closed Processes", "Successful Processes"];
 const goTo = (page) => {
@@ -28,6 +29,18 @@ const goTo = (page) => {
     default:
       break;
   }
+};
+
+const LogoAppBar = ({ style }) => {
+  return (
+    <Box
+      component={motion.div}
+      whileHover={{ rotate: 180 }}
+      sx={{ margin: "4px", ...style }}
+    >
+      <Logo55X40 />
+    </Box>
+  );
 };
 
 function ResponsiveAppBar() {
@@ -65,7 +78,7 @@ function ResponsiveAppBar() {
     <AppBar position="sticky">
       <Container maxWidth="xxl">
         <Toolbar disableGutters>
-          <AdbIcon sx={{ display: { xs: "none", md: "flex" }, mr: 1 }} />
+          <LogoAppBar style={{ display: { xs: "none", md: "flex" } }} />
           <Typography
             variant="h6"
             noWrap
@@ -76,12 +89,11 @@ function ResponsiveAppBar() {
               display: { xs: "none", md: "flex" },
               fontFamily: "monospace",
               fontWeight: 700,
-              letterSpacing: ".3rem",
               color: "inherit",
               textDecoration: "none",
             }}
           >
-            LOGO
+            Interview Manager
           </Typography>
           {authState.status && (
             <Box sx={{ flexGrow: 1, display: { xs: "flex", md: "none" } }}>
@@ -134,7 +146,7 @@ function ResponsiveAppBar() {
               </Menu>
             </Box>
           )}
-          <AdbIcon sx={{ display: { xs: "flex", md: "none" }, mr: 1 }} />
+          <LogoAppBar style={{ display: { xs: "flex", md: "none" } }} />
           <Typography
             variant="h5"
             noWrap
@@ -151,7 +163,7 @@ function ResponsiveAppBar() {
               textDecoration: "none",
             }}
           >
-            LOGO
+            HOME
           </Typography>
           {authState.status && (
             <Box sx={{ flexGrow: 1, display: { xs: "none", md: "flex" } }}>

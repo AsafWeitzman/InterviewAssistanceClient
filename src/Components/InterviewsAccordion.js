@@ -1,4 +1,4 @@
-import { useContext } from "react";
+import { useContext, useState } from "react";
 import Accordion from "@mui/material/Accordion";
 import AccordionSummary from "@mui/material/AccordionSummary";
 import AccordionDetails from "@mui/material/AccordionDetails";
@@ -13,7 +13,7 @@ import { InterviewsContext } from "../context/InterviewsContext";
 import Status from "./Status";
 
 const divStyle = {
-  backgroundColor: "#343434",
+  backgroundColor: "rgba(20, 20, 20, 0.8)",
   margin: "8px",
   padding: "16px",
   borderRadius: "8px",
@@ -22,6 +22,11 @@ const divStyle = {
 const InterviewsAccordion = ({ endedStatus, style }) => {
   const { listOfInterviews, setListOfInterviews } =
     useContext(InterviewsContext);
+  const [expanded, setExpanded] = useState(false);
+
+  const handleChange = (panel) => (event, isExpanded) => {
+    setExpanded(isExpanded ? panel : false);
+  };
 
   return (
     <div style={{ ...style }}>
@@ -29,11 +34,14 @@ const InterviewsAccordion = ({ endedStatus, style }) => {
         return (
           interview.status === endedStatus && (
             <Accordion
+              expanded={expanded === interview.id}
+              onChange={handleChange(interview.id)}
               key={interview.id}
               component={motion.div}
               initial={{ opacity: 0 }}
               animate={{ opacity: 1 }}
               transition={{ duration: 0.3 }}
+              sx={{ backgroundColor: "rgba(39, 39, 39, 0.8)" }}
             >
               <AccordionSummary
                 expandIcon={<ExpandMoreIcon />}

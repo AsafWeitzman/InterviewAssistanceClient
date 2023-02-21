@@ -90,6 +90,11 @@ const AddInterview = ({ style }) => {
         <Box>
           <Pulse shouldPules={!showCard}>
             <CustomizedButton
+              component={motion.div}
+              initial={{ opacity: 0 }}
+              animate={{ opacity: 1 }}
+              transition={{ duration: 0.3 }}
+              whileTap={{ scale: 0.9 }}
               fullWidth
               variant="contained"
               onClick={handleAddInterviewButton}
@@ -141,6 +146,7 @@ const AddInterview = ({ style }) => {
                     id="companyName"
                     label="Company Name"
                     name="companyName"
+                    autoComplete="off"
                     onChange={(e) => {
                       setCompanyNameValue(e.target.value);
                     }}
@@ -156,6 +162,7 @@ const AddInterview = ({ style }) => {
                     id="jobTitle"
                     label="Job Title"
                     name="jobTitle"
+                    autoComplete="off"
                     onChange={(e) => {
                       setJobTitleValue(e.target.value);
                     }}

@@ -146,6 +146,7 @@ export default function EditRowModal({ interviewRow }) {
                   id="companyNameEdit"
                   label="Company Name"
                   name="companyName"
+                  autoComplete="off"
                   defaultValue={companyName && companyName}
                 />
               </Box>
@@ -164,6 +165,7 @@ export default function EditRowModal({ interviewRow }) {
                   id="jobTitleEdit"
                   label="Job Title"
                   name="jobTitle"
+                  autoComplete="off"
                   defaultValue={jobTitle && jobTitle}
                 />
               </Box>
@@ -250,6 +252,7 @@ export default function EditRowModal({ interviewRow }) {
                   id="commentEdit"
                   label="Comment"
                   name="comment"
+                  autoComplete="off"
                   defaultValue={comment && comment}
                 />
               </Box>
@@ -268,6 +271,7 @@ export default function EditRowModal({ interviewRow }) {
                   id="whatWentWellEdit"
                   label="What Went Well?"
                   name="whatWentWell"
+                  autoComplete="off"
                   defaultValue={whatWentWell && whatWentWell}
                 />
               </Box>
@@ -286,6 +290,7 @@ export default function EditRowModal({ interviewRow }) {
                   id="whatCanBeImprovedEdit"
                   label="What Can Be Improved?"
                   name="whatCanBeImproved"
+                  autoComplete="off"
                   defaultValue={whatCanBeImproved && whatCanBeImproved}
                 />
               </Box>
@@ -304,6 +309,7 @@ export default function EditRowModal({ interviewRow }) {
                   id="actionItemsEdit"
                   label="Action Items"
                   name="actionItems"
+                  autoComplete="off"
                   defaultValue={actionItems && actionItems}
                 />
               </Box>
