@@ -25,3 +25,10 @@ export const RETRO_TITLES = Object.freeze({
   WHAT_CAN_BE_IMPROVED: "WHAT CAN BE IMPROVED",
   ACTION_ITEMS: "ACTION ITEMS",
 });
+
+export const RETRO_TITLES_2 = Object.freeze({
+  COMMENT: "Comment:",
+  WHAT_WENT_WELL: "What Went Well:",
+  WHAT_CAN_BE_IMPROVED: "What Can Be Improved:",
+  ACTION_ITEMS: "Action Items:",
+});

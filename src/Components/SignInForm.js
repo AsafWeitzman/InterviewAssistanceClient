@@ -78,6 +78,7 @@ const SignInForm = () => {
             id="email"
             label="Email Address"
             name="email"
+            autoComplete="off"
             select={false}
             onChange={(e) => {
               setEmailValue(e.target.value);
@@ -106,20 +107,7 @@ const SignInForm = () => {
             Sign In
           </CustomizedButton>
         </Box>
-        <Grid container>
-          <Grid item xs>
-            <Link
-              href="#"
-              variant="body2"
-              sx={{ color: "black", fontWeight: 900 }}
-            >
-              Forgot password?
-            </Link>
-          </Grid>
-          <Grid item>
-            <SignUpModal />
-          </Grid>
-        </Grid>
+        <SignUpModal />
       </Container>
     </>
   );

@@ -64,7 +64,7 @@ const Interview = () => {
 
   return (
     <Card
-      sx={{ borderRadius: "16px" }}
+      sx={{ borderRadius: "16px", m: "5%" }}
       component={motion.div}
       initial={{ opacity: 0, scale: 0.9 }}
       animate={{ opacity: 1, scale: 1 }}

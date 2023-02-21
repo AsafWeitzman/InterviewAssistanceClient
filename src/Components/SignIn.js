@@ -1,5 +1,6 @@
 import { Typography } from "@mui/material";
 import { Box, Container } from "@mui/system";
+import { motion } from "framer-motion";
 
 import { ReactComponent as InterviewManagerLogoAW } from "../assets/svg/InterviewManagerLogoAW.svg";
 import SignInForm from "./SignInForm";
@@ -8,6 +9,10 @@ const SignIn = ({ style }) => {
   return (
     <Container
       maxWidth="xxl"
+      component={motion.div}
+      initial={{ opacity: 0 }}
+      animate={{ opacity: 1 }}
+      transition={{ duration: 0.3 }}
       sx={{
         display: "flex",
         flexDirection: "row",
