@@ -32,3 +32,16 @@ export const RETRO_TITLES_2 = Object.freeze({
   WHAT_CAN_BE_IMPROVED: "What Can Be Improved:",
   ACTION_ITEMS: "Action Items:",
 });
+
+export const TABS = Object.freeze({
+  STATISTICS: "Statistics",
+  INTERVIEWS_SCHEDULE: "Interview Schedule",
+  SETTINGS: "Settings",
+});
+
+export const INTERVIEWS_CATEGORY = Object.freeze({
+  OPEN_INTERVIEWS: "Open Interviews",
+  CLOSED_INTERVIEWS: "Closed Interviews",
+  SUCCESSFUL_INTERVIEWS: "Successful Interviews",
+  TOTAL_INTERVIEWS: "Total Interviews",
+});
