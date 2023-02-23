@@ -12,6 +12,7 @@ import { AuthContextProvider } from "./context/AuthContext";
 import ProtectedRoute from "./Components/ProtectedRoute";
 import PageNotFound from "./Components/PageNotFound";
 import { InterviewsContextProvider } from "./context/InterviewsContext";
+import Profile from "./Components/Profile";
 
 const darkTheme = createTheme({
   palette: {
@@ -57,6 +58,14 @@ function App() {
               element={
                 <ProtectedRoute>
                   <SuccessfulInterviewsTable />
+                </ProtectedRoute>
+              }
+            ></Route>
+            <Route
+              path="/profile"
+              element={
+                <ProtectedRoute>
+                  <Profile />
                 </ProtectedRoute>
               }
             ></Route>

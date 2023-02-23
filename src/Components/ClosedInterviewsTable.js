@@ -7,7 +7,15 @@ import InterviewsAccordion from "./InterviewsAccordion";
 const ClosedInterviewsTable = () => {
   return (
     <div style={divStyleBackgroundImageHexagon}>
-      <Typography variant="h4" sx={{ m: "16px", textAlign: "center" }}>
+      <Typography
+        variant="h4"
+        sx={{
+          m: "16px",
+          textAlign: "center",
+          fontFamily: "monospace",
+          fontWeight: 600,
+        }}
+      >
         Closed Interviews
       </Typography>
       <InterviewsAccordion

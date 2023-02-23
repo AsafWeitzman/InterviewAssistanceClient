@@ -74,6 +74,10 @@ function ResponsiveAppBar() {
     });
   };
 
+  const handleProfile = () => {
+    handleCloseUserMenu();
+  };
+
   return (
     <AppBar position="sticky">
       <Container maxWidth="xxl">
@@ -93,7 +97,7 @@ function ResponsiveAppBar() {
               textDecoration: "none",
             }}
           >
-            Interview Manager
+            Interviews Manager
           </Typography>
           {authState.status && (
             <Box sx={{ flexGrow: 1, display: { xs: "flex", md: "none" } }}>
@@ -157,13 +161,12 @@ function ResponsiveAppBar() {
               display: { xs: "flex", md: "none" },
               flexGrow: 1,
               fontFamily: "monospace",
-              fontWeight: 700,
-              letterSpacing: ".3rem",
+              fontWeight: 500,
               color: "inherit",
               textDecoration: "none",
             }}
           >
-            HOME
+            Interviews Manager
           </Typography>
           {authState.status && (
             <Box sx={{ flexGrow: 1, display: { xs: "none", md: "flex" } }}>
@@ -216,15 +219,18 @@ function ResponsiveAppBar() {
                 open={Boolean(anchorElUser)}
                 onClose={handleCloseUserMenu}
               >
-                <MenuItem onClick={handleCloseUserMenu}>
-                  <Typography textAlign="center">Profile</Typography>
-                </MenuItem>
-                <MenuItem onClick={handleCloseUserMenu}>
-                  <Typography textAlign="center">Account</Typography>
-                </MenuItem>
-                <MenuItem onClick={handleCloseUserMenu}>
-                  <Typography textAlign="center">Dashboard</Typography>
-                </MenuItem>
+                <Link style={{ textDecoration: "none" }} to={"/profile"}>
+                  <MenuItem
+                    onClick={handleProfile}
+                    sx={{
+                      color: "white",
+                      display: "block",
+                    }}
+                  >
+                    <Typography textAlign="center">Profile</Typography>
+                  </MenuItem>
+                </Link>
+
                 <MenuItem onClick={handleLogout}>
                   <Typography textAlign="center">Logout</Typography>
                 </MenuItem>

@@ -142,7 +142,15 @@ const InterviewsTable = () => {
 
   return (
     <div style={divStyleBackgroundImageHexagon}>
-      <Typography variant="h4" sx={{ m: "16px", textAlign: "center" }}>
+      <Typography
+        variant="h4"
+        sx={{
+          m: "16px",
+          textAlign: "center",
+          fontFamily: "monospace",
+          fontWeight: 600,
+        }}
+      >
         Open Interviews
       </Typography>
       <TableContainer
