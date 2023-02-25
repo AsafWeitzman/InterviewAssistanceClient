@@ -222,7 +222,7 @@ const Statistics = () => {
       <Typography
         variant="h4"
         sx={{
-          m: "0 0 0 8px",
+          ml: "8px",
         }}
       >
         {TABS.STATISTICS}
