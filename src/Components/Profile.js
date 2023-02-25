@@ -50,7 +50,7 @@ const boxWrapper = {
   hidden: { opacity: 0 },
 };
 
-const statistics = {
+const child = {
   visible: { opacity: 1 },
   hidden: { opacity: 0 },
 };
@@ -111,14 +111,21 @@ const Profile = () => {
             animate="visible"
             variants={boxWrapper}
           >
-            <Statistics component={motion.div} variants={statistics} />
+            <Statistics component={motion.div} variants={child} />
           </Box>
         </TabPanel>
         <TabPanel value={value} index={1}>
-          <Settings />
+          interview Schedule
         </TabPanel>
         <TabPanel value={value} index={2}>
-          {TABS.SETTINGS}
+          <Box
+            component={motion.div}
+            initial="hidden"
+            animate="visible"
+            variants={boxWrapper}
+          >
+            <Settings component={motion.div} variants={child} />
+          </Box>
         </TabPanel>
       </Box>
     </motion.div>

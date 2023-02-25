@@ -130,8 +130,7 @@ const list = {
 };
 
 const InterviewsTable = () => {
-  const { listOfInterviews, setListOfInterviews } =
-    useContext(InterviewsContext);
+  const { listOfInterviews } = useContext(InterviewsContext);
 
   const shouldPresentEmptyTable = !listOfInterviews.filter((interview) => {
     return (
