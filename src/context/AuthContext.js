@@ -7,6 +7,7 @@ export const AuthContext = createContext({
     userName: "",
     email: "",
     status: false,
+    profilePicture: "",
   },
   setAuthState: () => {},
 });
@@ -17,6 +18,7 @@ export function AuthContextProvider({ children }) {
     userName: "",
     email: "",
     status: false,
+    profilePicture: "",
   });
 
   useEffect(() => {
@@ -35,6 +37,7 @@ export function AuthContextProvider({ children }) {
             userName: response.data.userName,
             email: response.data.email,
             status: true,
+            profilePicture: response.data.profilePicture,
           });
         }
       });

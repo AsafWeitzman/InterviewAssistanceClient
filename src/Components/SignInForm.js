@@ -46,6 +46,7 @@ const SignInForm = () => {
               id: response.data.id,
               email: response.data.email,
               status: true,
+              profilePicture: response.data.profilePicture,
             });
             setFetchDataToggle(!fetchDataToggle);
           }
