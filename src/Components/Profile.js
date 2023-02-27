@@ -23,11 +23,7 @@ function TabPanel(props) {
       aria-labelledby={`vertical-tab-${index}`}
       {...other}
     >
-      {value === index && (
-        <Box sx={{ p: 3 }}>
-          <Typography>{children}</Typography>
-        </Box>
-      )}
+      {value === index && <Box sx={{ p: "8px" }}>{children}</Box>}
     </div>
   );
 }
@@ -64,7 +60,8 @@ const Profile = () => {
   };
 
   return (
-    <motion.div
+    <Box
+      component={motion.div}
       initial={{ opacity: 0 }}
       animate={{ opacity: 1 }}
       transition={{ duration: 0.3 }}
@@ -82,6 +79,7 @@ const Profile = () => {
           Hi {authState.userName}
         </Typography>
       </Box>
+
       <Box
         sx={{
           flexGrow: 1,
@@ -117,7 +115,7 @@ const Profile = () => {
         <TabPanel value={value} index={1}>
           interview Schedule
         </TabPanel>
-        <TabPanel value={value} index={2}>
+        <TabPanel value={value} index={2} style={{ width: "70%" }}>
           <Box
             component={motion.div}
             initial="hidden"
@@ -128,7 +126,7 @@ const Profile = () => {
           </Box>
         </TabPanel>
       </Box>
-    </motion.div>
+    </Box>
   );
 };
 export default Profile;

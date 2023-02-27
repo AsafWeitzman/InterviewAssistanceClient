@@ -196,11 +196,16 @@ function ResponsiveAppBar() {
             <Box sx={{ flexGrow: 0 }}>
               <Tooltip title="Open settings">
                 <IconButton onClick={handleOpenUserMenu} sx={{ p: 0 }}>
-                  <Avatar>
-                    {authState.userName.length
-                      ? authState.userName[0].toUpperCase()
-                      : null}
-                  </Avatar>
+                  <Avatar
+                    alt={
+                      authState.userName.length
+                        ? authState.userName[0].toUpperCase()
+                        : null
+                    }
+                    src={
+                      authState.profilePicture ? authState.profilePicture : ""
+                    }
+                  />
                 </IconButton>
               </Tooltip>
               <Menu
