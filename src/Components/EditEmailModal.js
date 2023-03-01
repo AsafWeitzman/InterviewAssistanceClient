@@ -26,7 +26,7 @@ const style = {
 
 const boxStyle = { m: "16px 8px 0 0" };
 
-export default function EditNameModal() {
+export default function EditEmailModal() {
   const [open, setOpen] = useState(false);
   const handleOpen = () => setOpen(true);
   const handleClose = () => setOpen(false);
@@ -38,11 +38,11 @@ export default function EditNameModal() {
     event.preventDefault();
     const formData = new FormData(event.currentTarget);
     const data = {
-      userName: formData.get("userName"),
+      email: formData.get("email"),
     };
 
     axios
-      .put(`http://localhost:3001/auth/editUserName/${id}`, data, {
+      .put(`http://localhost:3001/auth/editEmail/${id}`, data, {
         headers: { accessToken: localStorage.getItem("accessToken") },
       })
       .then(
@@ -54,7 +54,7 @@ export default function EditNameModal() {
             localStorage.setItem("accessToken", response.data.token);
             setAuthState({
               ...authState,
-              userName: response.data.userName,
+              email: response.data.email,
             });
           }
         },
@@ -90,7 +90,7 @@ export default function EditNameModal() {
               letterSpacing: ".2rem",
             }}
           >
-            Edit Name
+            Edit Email
           </Typography>
 
           <Grid container>
@@ -105,11 +105,11 @@ export default function EditNameModal() {
                 <TextField
                   required
                   fullWidth
-                  id="userName"
-                  label="User Name"
-                  name="userName"
+                  id="email"
+                  label="Email"
+                  name="email"
                   autoComplete="off"
-                  defaultValue={authState.userName}
+                  defaultValue={authState.email}
                 />
               </Box>
             </Grid>

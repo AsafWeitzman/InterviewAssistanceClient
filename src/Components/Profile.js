@@ -11,6 +11,7 @@ import { AuthContext } from "../context/AuthContext";
 import { TABS } from "../utils/constants";
 import Statistics from "./Statistics";
 import Settings from "./Settings";
+import InterviewsSchedule from "./InterviewsSchedule";
 
 function TabPanel(props) {
   const { children, value, index, ...other } = props;
@@ -112,8 +113,15 @@ const Profile = () => {
             <Statistics component={motion.div} variants={child} />
           </Box>
         </TabPanel>
-        <TabPanel value={value} index={1}>
-          interview Schedule
+        <TabPanel value={value} index={1} style={{ width: "80%" }}>
+          <Box
+            component={motion.div}
+            initial="hidden"
+            animate="visible"
+            variants={boxWrapper}
+          >
+            <InterviewsSchedule component={motion.div} variants={child} />
+          </Box>
         </TabPanel>
         <TabPanel value={value} index={2} style={{ width: "70%" }}>
           <Box
