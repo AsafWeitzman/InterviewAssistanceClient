@@ -8,7 +8,7 @@ import ModeEditOutlineOutlinedIcon from "@mui/icons-material/ModeEditOutlineOutl
 import ModeEditIcon from "@mui/icons-material/ModeEdit";
 import styled from "@emotion/styled";
 
-import { STEPS } from "../utils/constants";
+import { GRID_SIZE, STEPS } from "../utils/constants";
 import { calculateStatus } from "../utils/common";
 import axios from "axios";
 import { InterviewsContext } from "../context/InterviewsContext";
@@ -34,10 +34,6 @@ const style = {
 };
 
 const boxStyle = { m: "16px 8px 0 0" };
-
-const GRID_SIZE_3 = 3;
-const GRID_SIZE_6 = 6;
-const GRID_SIZE_12 = 12;
 
 export default function EditRowModal({ interviewRow }) {
   const [open, setOpen] = useState(false);
@@ -134,10 +130,10 @@ export default function EditRowModal({ interviewRow }) {
           <Grid container>
             <Grid
               item
-              xs={GRID_SIZE_6}
-              sm={GRID_SIZE_6}
-              md={GRID_SIZE_6}
-              lg={GRID_SIZE_6}
+              xs={GRID_SIZE.MEDIUM_LENGTH}
+              sm={GRID_SIZE.MEDIUM_LENGTH}
+              md={GRID_SIZE.MEDIUM_LENGTH}
+              lg={GRID_SIZE.MEDIUM_LENGTH}
             >
               <Box sx={boxStyle}>
                 <TextField
@@ -153,10 +149,10 @@ export default function EditRowModal({ interviewRow }) {
             </Grid>
             <Grid
               item
-              xs={GRID_SIZE_6}
-              sm={GRID_SIZE_6}
-              md={GRID_SIZE_6}
-              lg={GRID_SIZE_6}
+              xs={GRID_SIZE.MEDIUM_LENGTH}
+              sm={GRID_SIZE.MEDIUM_LENGTH}
+              md={GRID_SIZE.MEDIUM_LENGTH}
+              lg={GRID_SIZE.MEDIUM_LENGTH}
             >
               <Box sx={boxStyle}>
                 <TextField
@@ -172,10 +168,10 @@ export default function EditRowModal({ interviewRow }) {
             </Grid>
             <Grid
               item
-              xs={GRID_SIZE_3}
-              sm={GRID_SIZE_3}
-              md={GRID_SIZE_3}
-              lg={GRID_SIZE_3}
+              xs={GRID_SIZE.SMALL_LENGTH}
+              sm={GRID_SIZE.SMALL_LENGTH}
+              md={GRID_SIZE.SMALL_LENGTH}
+              lg={GRID_SIZE.SMALL_LENGTH}
             >
               <Box sx={boxStyle}>
                 <TextField
@@ -202,10 +198,10 @@ export default function EditRowModal({ interviewRow }) {
             </Grid>
             <Grid
               item
-              xs={GRID_SIZE_3}
-              sm={GRID_SIZE_3}
-              md={GRID_SIZE_3}
-              lg={GRID_SIZE_3}
+              xs={GRID_SIZE.SMALL_LENGTH}
+              sm={GRID_SIZE.SMALL_LENGTH}
+              md={GRID_SIZE.SMALL_LENGTH}
+              lg={GRID_SIZE.SMALL_LENGTH}
             >
               <Box sx={boxStyle}>
                 <TextField
@@ -219,10 +215,10 @@ export default function EditRowModal({ interviewRow }) {
             </Grid>
             <Grid
               item
-              xs={GRID_SIZE_6}
-              sm={GRID_SIZE_6}
-              md={GRID_SIZE_6}
-              lg={GRID_SIZE_6}
+              xs={GRID_SIZE.MEDIUM_LENGTH}
+              sm={GRID_SIZE.MEDIUM_LENGTH}
+              md={GRID_SIZE.MEDIUM_LENGTH}
+              lg={GRID_SIZE.MEDIUM_LENGTH}
             >
               <Box sx={boxStyle}>
                 <CustomizedTextFieldDateTime
@@ -241,10 +237,10 @@ export default function EditRowModal({ interviewRow }) {
 
             <Grid
               item
-              xs={GRID_SIZE_12}
-              sm={GRID_SIZE_12}
-              md={GRID_SIZE_12}
-              lg={GRID_SIZE_12}
+              xs={GRID_SIZE.LARGE_LENGTH}
+              sm={GRID_SIZE.LARGE_LENGTH}
+              md={GRID_SIZE.LARGE_LENGTH}
+              lg={GRID_SIZE.LARGE_LENGTH}
             >
               <Box sx={boxStyle}>
                 <TextField
@@ -260,10 +256,10 @@ export default function EditRowModal({ interviewRow }) {
 
             <Grid
               item
-              xs={GRID_SIZE_12}
-              sm={GRID_SIZE_12}
-              md={GRID_SIZE_12}
-              lg={GRID_SIZE_12}
+              xs={GRID_SIZE.LARGE_LENGTH}
+              sm={GRID_SIZE.LARGE_LENGTH}
+              md={GRID_SIZE.LARGE_LENGTH}
+              lg={GRID_SIZE.LARGE_LENGTH}
             >
               <Box sx={boxStyle}>
                 <TextField
@@ -279,10 +275,10 @@ export default function EditRowModal({ interviewRow }) {
 
             <Grid
               item
-              xs={GRID_SIZE_12}
-              sm={GRID_SIZE_12}
-              md={GRID_SIZE_12}
-              lg={GRID_SIZE_12}
+              xs={GRID_SIZE.LARGE_LENGTH}
+              sm={GRID_SIZE.LARGE_LENGTH}
+              md={GRID_SIZE.LARGE_LENGTH}
+              lg={GRID_SIZE.LARGE_LENGTH}
             >
               <Box sx={boxStyle}>
                 <TextField
@@ -298,10 +294,10 @@ export default function EditRowModal({ interviewRow }) {
 
             <Grid
               item
-              xs={GRID_SIZE_12}
-              sm={GRID_SIZE_12}
-              md={GRID_SIZE_12}
-              lg={GRID_SIZE_12}
+              xs={GRID_SIZE.LARGE_LENGTH}
+              sm={GRID_SIZE.LARGE_LENGTH}
+              md={GRID_SIZE.LARGE_LENGTH}
+              lg={GRID_SIZE.LARGE_LENGTH}
             >
               <Box sx={boxStyle}>
                 <TextField

@@ -64,7 +64,7 @@ const TextInTheBox = ({ row }) => {
   );
 };
 
-const Row = ({ row, setListOfInterviews, listOfInterviews }) => {
+const Row = ({ row }) => {
   const [open, setOpen] = useState(false);
   const navigate = useNavigate();
 

@@ -35,7 +35,7 @@ export const RETRO_TITLES_2 = Object.freeze({
 
 export const TABS = Object.freeze({
   STATISTICS: "Statistics",
-  INTERVIEWS_SCHEDULE: "Interview Schedule",
+  INTERVIEWS_SCHEDULE: "Interviews Schedule",
   SETTINGS: "Settings",
 });
 
@@ -44,4 +44,20 @@ export const INTERVIEWS_CATEGORY = Object.freeze({
   CLOSED_INTERVIEWS: "Closed Interviews",
   SUCCESSFUL_INTERVIEWS: "Successful Interviews",
   TOTAL_INTERVIEWS: "Total Interviews",
+});
+
+export const DAYS = Object.freeze({
+  SUNDAY: "Sunday",
+  MONDAY: "Monday",
+  TUESDAY: "Tuesday",
+  WEDNESDAY: "Wednesday",
+  THURSDAY: "Thursday",
+  FRIDAY: "Friday",
+  SATURDAY: "Saturday",
+});
+
+export const GRID_SIZE = Object.freeze({
+  SMALL_LENGTH: 3,
+  MEDIUM_LENGTH: 6,
+  LARGE_LENGTH: 12,
 });

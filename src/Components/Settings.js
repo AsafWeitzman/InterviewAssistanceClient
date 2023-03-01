@@ -14,12 +14,29 @@ import { TABS } from "../utils/constants";
 import { AuthContext } from "../context/AuthContext";
 import EditNameModal from "./EditNameModal";
 import EditProfilePictureModal from "./EditProfilePictureModal";
+import EditEmailModal from "./EditEmailModal";
+
+const EditableListItem = ({ children, listItem, hasAvatar, avatar }) => {
+  return (
+    <List component="div" disablePadding>
+      <ListItem sx={{ pl: 4 }}>
+        {hasAvatar && (
+          <Avatar alt="" src={avatar ? avatar : ""} sx={{ mr: "8px" }} />
+        )}
+        <ListItemText primary={listItem} />
+        {children}
+      </ListItem>
+    </List>
+  );
+};
 
 const Settings = () => {
   const { authState } = useContext(AuthContext);
   const [openEmail, setOpenEmail] = useState(false);
   const [openUserName, setOpenUserName] = useState(false);
   const [openProfilePicture, setOpenProfilePicture] = useState(false);
+
+  const { id, userName, email, profilePicture } = authState;
 
   return (
     <>
@@ -54,12 +71,9 @@ const Settings = () => {
             {openUserName ? <ExpandLess /> : <ExpandMore />}
           </ListItemButton>
           <Collapse in={openUserName} timeout="auto" unmountOnExit>
-            <List component="div" disablePadding>
-              <ListItem sx={{ pl: 4 }}>
-                <ListItemText primary={authState.userName} />
-                <EditNameModal />
-              </ListItem>
-            </List>
+            <EditableListItem listItem={userName}>
+              <EditNameModal />
+            </EditableListItem>
           </Collapse>
 
           <ListItemButton
@@ -71,12 +85,12 @@ const Settings = () => {
             {openEmail ? <ExpandLess /> : <ExpandMore />}
           </ListItemButton>
           <Collapse in={openEmail} timeout="auto" unmountOnExit>
-            <List component="div" disablePadding>
-              <ListItemButton sx={{ pl: 4 }}>
-                <ListItemText primary={authState.email} />
-              </ListItemButton>
-            </List>
+            <EditableListItem listItem={email}>
+              <EditEmailModal />
+            </EditableListItem>
           </Collapse>
+
+          {/* TODO: password */}
 
           <ListItemButton
             onClick={() => {
@@ -87,19 +101,16 @@ const Settings = () => {
             {openProfilePicture ? <ExpandLess /> : <ExpandMore />}
           </ListItemButton>
           <Collapse in={openProfilePicture} timeout="auto" unmountOnExit>
-            <List component="div" disablePadding>
-              <ListItem sx={{ pl: 4 }}>
-                <Avatar
-                  alt=""
-                  src={authState.profilePicture ? authState.profilePicture : ""}
-                  sx={{ mr: "8px" }}
-                />
-                <ListItemText primary={authState.userName} />
-                <EditProfilePictureModal />
-              </ListItem>
-            </List>
+            <EditableListItem
+              listItem={userName}
+              hasAvatar={true}
+              avatar={profilePicture}
+            >
+              <EditProfilePictureModal />
+            </EditableListItem>
           </Collapse>
         </List>
+
         <Avatar
           src={authState.profilePicture ? authState.profilePicture : ""}
           sx={{

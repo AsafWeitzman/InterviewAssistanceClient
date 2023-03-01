@@ -7,6 +7,8 @@ import styled from "@emotion/styled";
 import { Divider, Grid, TextField } from "@mui/material";
 import axios from "axios";
 
+import { GRID_SIZE } from "../utils/constants";
+
 const style = {
   position: "absolute",
   top: "50%",
@@ -31,7 +33,6 @@ const BlackTextButton = styled(Button)({
 });
 
 const boxStyle = { m: "16px 8px 0 0" };
-const GRID_SIZE_12 = 12;
 
 const SignUpModal = () => {
   const [open, setOpen] = React.useState(false);
@@ -79,15 +80,16 @@ const SignUpModal = () => {
           <Grid container>
             <Grid
               item
-              xs={GRID_SIZE_12}
-              sm={GRID_SIZE_12}
-              md={GRID_SIZE_12}
-              lg={GRID_SIZE_12}
+              xs={GRID_SIZE.LARGE_LENGTH}
+              sm={GRID_SIZE.LARGE_LENGTH}
+              md={GRID_SIZE.LARGE_LENGTH}
+              lg={GRID_SIZE.LARGE_LENGTH}
             >
               <Box sx={boxStyle}>
                 <TextField
                   required
                   fullWidth
+                  autoComplete="off"
                   id="userName"
                   label="User Name"
                   name="userName"
@@ -96,16 +98,17 @@ const SignUpModal = () => {
             </Grid>
             <Grid
               item
-              xs={GRID_SIZE_12}
-              sm={GRID_SIZE_12}
-              md={GRID_SIZE_12}
-              lg={GRID_SIZE_12}
+              xs={GRID_SIZE.LARGE_LENGTH}
+              sm={GRID_SIZE.LARGE_LENGTH}
+              md={GRID_SIZE.LARGE_LENGTH}
+              lg={GRID_SIZE.LARGE_LENGTH}
             >
               <Box sx={boxStyle}>
                 {/* todo: validate email */}
                 <TextField
                   required
                   fullWidth
+                  autoComplete="off"
                   id="email"
                   label="Email"
                   name="email"
@@ -114,10 +117,10 @@ const SignUpModal = () => {
             </Grid>
             <Grid
               item
-              xs={GRID_SIZE_12}
-              sm={GRID_SIZE_12}
-              md={GRID_SIZE_12}
-              lg={GRID_SIZE_12}
+              xs={GRID_SIZE.LARGE_LENGTH}
+              sm={GRID_SIZE.LARGE_LENGTH}
+              md={GRID_SIZE.LARGE_LENGTH}
+              lg={GRID_SIZE.LARGE_LENGTH}
             >
               <Box sx={boxStyle}>
                 <TextField
