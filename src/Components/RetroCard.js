@@ -6,7 +6,6 @@ import { ReactComponent as WhatWentWellIcon } from "../assets/svg/WhatWentWellIc
 import { ReactComponent as WhatCanBeImprovedIcon } from "../assets/svg/WhatCanBeImprovedIcon.svg";
 import { ReactComponent as ActionItemsIcon } from "../assets/svg/ActionItemsIcon.svg";
 
-import { COLORS } from "../style/colors";
 import { RETRO_TITLES } from "../utils/constants";
 
 const boxStyle = {
@@ -19,16 +18,11 @@ const boxStyle = {
   mt: 2,
   mb: 2,
   boxShadow: "0 8px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19)",
-  // "&:hover": {
-  //   boxShadow:
-  //     "0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19)",
-  // },
   minHeight: "330px",
   transition: "width 2s, height 4s",
 };
 
 const containerStyle = {
-  // backgroundImage: `linear-gradient(to bottom right, ${COLORS.DEEP_BLUE_1}, ${COLORS.DEEP_BLUE_2})`,
   backgroundImage: `linear-gradient(to bottom, #474554, #ACA9BB)`,
   padding: "4px 0 4px 0",
   borderRadius: "16px",

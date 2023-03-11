@@ -9,7 +9,7 @@ import ModeEditIcon from "@mui/icons-material/ModeEdit";
 
 import axios from "axios";
 import { AuthContext } from "../context/AuthContext";
-import { GRID_SIZE } from "../utils/constants";
+import { BUTTONS_TEXT, GRID_SIZE } from "../utils/constants";
 
 const style = {
   position: "absolute",
@@ -120,7 +120,7 @@ export default function EditNameModal() {
             color="success"
             type="submit"
           >
-            Save
+            {BUTTONS_TEXT.SAVE}
           </Button>
           <Button
             variant="outlined"
@@ -128,7 +128,7 @@ export default function EditNameModal() {
             color="error"
             onClick={handleClose}
           >
-            Exit
+            {BUTTONS_TEXT.EXIT}
           </Button>
         </Box>
       </Modal>

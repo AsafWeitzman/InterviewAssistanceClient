@@ -2,7 +2,7 @@ import { Typography } from "@mui/material";
 import { Box } from "@mui/system";
 import { motion } from "framer-motion";
 
-import { STEPS } from "../utils/constants";
+import { STATUSES, STEPS } from "../utils/constants";
 import { COLORS } from "../style/colors";
 
 const textBackgroundStyle = {
@@ -27,7 +27,7 @@ const AppliedBox = () => {
           ...textBackgroundStyle,
         }}
       >
-        Applied
+        {STATUSES.APPLIED}
       </Typography>
     </Box>
   );
@@ -48,7 +48,7 @@ const InProgressBox = () => {
           ...textBackgroundStyle,
         }}
       >
-        In progress
+        {STATUSES.IN_PROGRESS}
       </Typography>
     </Box>
   );
@@ -69,7 +69,7 @@ const OfferBox = () => {
           ...textBackgroundStyle,
         }}
       >
-        Offer
+        {STATUSES.OFFER}
       </Typography>
     </Box>
   );
@@ -90,7 +90,7 @@ const EndedBox = () => {
           ...textBackgroundStyle,
         }}
       >
-        Ended
+        {STATUSES.ENDED}
       </Typography>
     </Box>
   );

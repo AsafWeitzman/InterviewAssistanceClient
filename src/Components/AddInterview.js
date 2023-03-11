@@ -7,7 +7,12 @@ import { motion } from "framer-motion";
 import CustomizedButton from "./CustomizedButton";
 import CustomizedTextField from "./CustomizedTextField";
 import Pulse from "./Pulse";
-import { STEPS } from "../utils/constants";
+import {
+  BUTTONS_TEXT,
+  GRID_SIZE,
+  SNACKBAR_MSG,
+  STEPS,
+} from "../utils/constants";
 import { calculateStatus } from "../utils/common";
 import { InterviewsContext } from "../context/InterviewsContext";
 
@@ -58,15 +63,13 @@ const AddInterview = ({ style }) => {
           resetInputValues();
 
           //snackbar logic
-          setSnackbarContent("Your interview was saved!");
+          setSnackbarContent(SNACKBAR_MSG.YOUR_INTERVIEW_WAS_SAVED);
           setOpenSnackBar(true);
           setFetchDataToggle(!fetchDataToggle);
         },
         () => {
           //snackbar logic
-          setSnackbarContent(
-            "An unknown error accurred during interview save."
-          );
+          setSnackbarContent(SNACKBAR_MSG.ERR_DURING_INTERVIEW_SAVE);
           setOpenSnackBar(true);
         }
       );
@@ -99,7 +102,7 @@ const AddInterview = ({ style }) => {
               variant="contained"
               onClick={handleAddInterviewButton}
             >
-              Add an Interview
+              {BUTTONS_TEXT.ADD_AN_INTERVIEW}
             </CustomizedButton>
           </Pulse>
         </Box>
@@ -137,7 +140,13 @@ const AddInterview = ({ style }) => {
                   </Typography>
                 </Box>
               </Grid>
-              <Grid item lg={3} md={3} sm={3} xs={3}>
+              <Grid
+                item
+                lg={GRID_SIZE.SMALL_LENGTH}
+                md={GRID_SIZE.SMALL_LENGTH}
+                sm={GRID_SIZE.SMALL_LENGTH}
+                xs={GRID_SIZE.SMALL_LENGTH}
+              >
                 <Box sx={{ m: 1 }}>
                   <CustomizedTextField
                     required
@@ -153,7 +162,13 @@ const AddInterview = ({ style }) => {
                   />
                 </Box>
               </Grid>
-              <Grid item lg={3} md={3} sm={3} xs={3}>
+              <Grid
+                item
+                lg={GRID_SIZE.SMALL_LENGTH}
+                md={GRID_SIZE.SMALL_LENGTH}
+                sm={GRID_SIZE.SMALL_LENGTH}
+                xs={GRID_SIZE.SMALL_LENGTH}
+              >
                 <Box sx={{ m: 1 }}>
                   <CustomizedTextField
                     required
@@ -169,7 +184,13 @@ const AddInterview = ({ style }) => {
                   />
                 </Box>
               </Grid>
-              <Grid item lg={3} md={3} sm={3} xs={3}>
+              <Grid
+                item
+                lg={GRID_SIZE.SMALL_LENGTH}
+                md={GRID_SIZE.SMALL_LENGTH}
+                sm={GRID_SIZE.SMALL_LENGTH}
+                xs={GRID_SIZE.SMALL_LENGTH}
+              >
                 <Box sx={{ m: 1 }}>
                   <CustomizedTextField
                     sx={{
@@ -197,7 +218,13 @@ const AddInterview = ({ style }) => {
                   </CustomizedTextField>
                 </Box>
               </Grid>
-              <Grid item lg={3} md={3} sm={3} xs={3}>
+              <Grid
+                item
+                lg={GRID_SIZE.SMALL_LENGTH}
+                md={GRID_SIZE.SMALL_LENGTH}
+                sm={GRID_SIZE.SMALL_LENGTH}
+                xs={GRID_SIZE.SMALL_LENGTH}
+              >
                 <Box sx={{ m: 1 }}>
                   <CustomizedTextField
                     required
@@ -217,19 +244,37 @@ const AddInterview = ({ style }) => {
                 </Box>
               </Grid>
               <Grid container justifyContent="flex-end">
-                <Grid item lg={6} md={6} sm={6} xs={6}></Grid>
-                <Grid item lg={3} md={3} sm={3} xs={3}>
+                <Grid
+                  item
+                  lg={GRID_SIZE.MEDIUM_LENGTH}
+                  md={GRID_SIZE.MEDIUM_LENGTH}
+                  sm={GRID_SIZE.MEDIUM_LENGTH}
+                  xs={GRID_SIZE.MEDIUM_LENGTH}
+                ></Grid>
+                <Grid
+                  item
+                  lg={GRID_SIZE.SMALL_LENGTH}
+                  md={GRID_SIZE.SMALL_LENGTH}
+                  sm={GRID_SIZE.SMALL_LENGTH}
+                  xs={GRID_SIZE.SMALL_LENGTH}
+                >
                   <Box sx={{ m: 1 }}>
                     <CustomizedButton
                       fullWidth
                       variant="contained"
                       type="submit"
                     >
-                      Add
+                      {BUTTONS_TEXT.ADD}
                     </CustomizedButton>
                   </Box>
                 </Grid>
-                <Grid item lg={3} md={3} sm={3} xs={3}>
+                <Grid
+                  item
+                  lg={GRID_SIZE.SMALL_LENGTH}
+                  md={GRID_SIZE.SMALL_LENGTH}
+                  sm={GRID_SIZE.SMALL_LENGTH}
+                  xs={GRID_SIZE.SMALL_LENGTH}
+                >
                   <Box sx={{ m: 1 }}>
                     <CustomizedButton
                       fullWidth
@@ -239,7 +284,7 @@ const AddInterview = ({ style }) => {
                         setShowCard(false);
                       }}
                     >
-                      Cancel
+                      {BUTTONS_TEXT.CANCEL}
                     </CustomizedButton>
                   </Box>
                 </Grid>

@@ -6,6 +6,7 @@ import { motion } from "framer-motion";
 
 import { InterviewsContext } from "../context/InterviewsContext";
 import { GRID_SIZE, STATUSES, TABS } from "../utils/constants";
+import { FONT_WEIGHT } from "../style/textStyle";
 
 const START_OF_WEEK = moment().startOf("week");
 const END_OF_WEEK = moment().endOf("week");
@@ -96,7 +97,7 @@ const CurrentWeekDays = () => {
               variant="p"
               sx={{
                 textAlign: "center",
-                fontWeight: "900",
+                fontWeight: FONT_WEIGHT.X_LARGE,
               }}
             >
               {dayOfWeek.dayNumber}
@@ -133,7 +134,7 @@ const CurrentWeekDays = () => {
             variant="p"
             sx={{
               textAlign: "center",
-              fontWeight: "900",
+              fontWeight: FONT_WEIGHT.X_LARGE,
             }}
           >
             {`${daysOfWeek[0].dayNumber} ${daysOfWeek[0].day} - ${

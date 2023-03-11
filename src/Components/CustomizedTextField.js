@@ -2,9 +2,9 @@ import styled from "@emotion/styled";
 import { TextField } from "@mui/material";
 
 const CustomizedTextField = styled(TextField)({
-  ".css-p51h6s-MuiInputBase-input-MuiOutlinedInput-input:-webkit-autofill": {
-    "-webkit-box-shadow": "0 0 0 0 inset",
-    "-webkit-text-fill-color": "black",
+  ".css-p51h6s-MuiInputBase-input-MuiOutlinedInput-input:WebkitAutofill": {
+    WebkitBoxShadow: "0 0 0 0 inset",
+    WebkitTextFillColor: "black",
     caretColor: "#fff",
     borderRadius: "inherit",
   },

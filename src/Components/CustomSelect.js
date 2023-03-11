@@ -1,12 +1,10 @@
-import * as React from "react";
-import InputLabel from "@mui/material/InputLabel";
+import React, { useState } from "react";
 import MenuItem from "@mui/material/MenuItem";
-import FormHelperText from "@mui/material/FormHelperText";
 import FormControl from "@mui/material/FormControl";
 import Select from "@mui/material/Select";
 
 export default function CustomSelect({ options }) {
-  const [option, setOption] = React.useState("");
+  const [option, setOption] = useState("");
 
   const handleChange = (event) => {
     setOption(event.target.value);

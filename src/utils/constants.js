@@ -17,6 +17,7 @@ export const STATUSES = Object.freeze({
   OFFER: "Offer",
   ENDED_GOOD: "Ended good",
   ENDED_BAD: "Ended bad",
+  ENDED: "Ended",
 });
 
 export const RETRO_TITLES = Object.freeze({
@@ -60,4 +61,21 @@ export const GRID_SIZE = Object.freeze({
   SMALL_LENGTH: 3,
   MEDIUM_LENGTH: 6,
   LARGE_LENGTH: 12,
+});
+
+export const SNACKBAR_MSG = Object.freeze({
+  YOUR_INTERVIEW_WAS_SAVED: "Your interview was saved!",
+  ERR_DURING_INTERVIEW_SAVE: "An unknown error accurred during interview save.",
+  USER_CREATED_SUCCESSFULLY: "Congratulations, user created successfully!",
+  ERR_USER_CREATED: "An unknown error accurred during user creation.",
+});
+
+export const BUTTONS_TEXT = Object.freeze({
+  ADD: "Add",
+  CANCEL: "Cancel",
+  ADD_AN_INTERVIEW: "Add An Interview",
+  YES: "Yes",
+  SAVE: "Save",
+  SIGN_UP: "Sign Up",
+  EXIT: "Exit",
 });

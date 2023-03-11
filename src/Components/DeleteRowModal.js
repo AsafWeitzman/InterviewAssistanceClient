@@ -1,4 +1,4 @@
-import React, { useContext } from "react";
+import React, { useContext, useState } from "react";
 import Box from "@mui/material/Box";
 import Button from "@mui/material/Button";
 import Typography from "@mui/material/Typography";
@@ -7,7 +7,9 @@ import { IconButton } from "@mui/material";
 import DeleteForeverIcon from "@mui/icons-material/DeleteForever";
 import DeleteForeverOutlinedIcon from "@mui/icons-material/DeleteForeverOutlined";
 import axios from "axios";
+
 import { InterviewsContext } from "../context/InterviewsContext";
+import { BUTTONS_TEXT } from "../utils/constants";
 
 const style = {
   position: "absolute",
@@ -23,7 +25,7 @@ const style = {
 };
 
 export default function DeleteRowModal({ interviewId }) {
-  const [open, setOpen] = React.useState(false);
+  const [open, setOpen] = useState(false);
   const handleOpen = () => setOpen(true);
   const handleClose = () => setOpen(false);
   const { listOfInterviews, setListOfInterviews } =
@@ -76,7 +78,7 @@ export default function DeleteRowModal({ interviewId }) {
             sx={{ m: "16px 8px 0 0" }}
             onClick={deleteHandler}
           >
-            Yes
+            {BUTTONS_TEXT.YES}
           </Button>
           <Button
             variant="outlined"
@@ -85,7 +87,7 @@ export default function DeleteRowModal({ interviewId }) {
               handleClose(false);
             }}
           >
-            Exit
+            {BUTTONS_TEXT.EXIT}
           </Button>
         </Box>
       </Modal>

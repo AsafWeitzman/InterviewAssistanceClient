@@ -1,10 +1,7 @@
-import { Typography } from "@mui/material";
+import React, { useContext, useState } from "react";
+import { Typography, Tabs, Tab } from "@mui/material";
 import { Box } from "@mui/system";
-import { useContext } from "react";
-import * as React from "react";
 import PropTypes from "prop-types";
-import Tabs from "@mui/material/Tabs";
-import Tab from "@mui/material/Tab";
 import { motion } from "framer-motion";
 
 import { AuthContext } from "../context/AuthContext";
@@ -12,6 +9,7 @@ import { TABS } from "../utils/constants";
 import Statistics from "./Statistics";
 import Settings from "./Settings";
 import InterviewsSchedule from "./InterviewsSchedule";
+import { FONT_FAMILY, FONT_WEIGHT } from "../style/textStyle";
 
 function TabPanel(props) {
   const { children, value, index, ...other } = props;
@@ -54,7 +52,7 @@ const child = {
 
 const Profile = () => {
   const { authState } = useContext(AuthContext);
-  const [value, setValue] = React.useState(0);
+  const [value, setValue] = useState(0);
 
   const handleChange = (event, newValue) => {
     setValue(newValue);
@@ -73,8 +71,8 @@ const Profile = () => {
           sx={{
             m: "16px 0 8px 0",
             textAlign: "center",
-            fontFamily: "monospace",
-            fontWeight: 600,
+            fontFamily: FONT_FAMILY.MONOSPACE,
+            fontWeight: FONT_WEIGHT.MEDIUM,
           }}
         >
           Hi {authState.userName}

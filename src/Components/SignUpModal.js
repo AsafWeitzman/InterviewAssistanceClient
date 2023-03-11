@@ -1,13 +1,13 @@
-import * as React from "react";
+import React, { useState } from "react";
 import Box from "@mui/material/Box";
 import Button from "@mui/material/Button";
 import Typography from "@mui/material/Typography";
 import Modal from "@mui/material/Modal";
 import styled from "@emotion/styled";
-import { Divider, Grid, TextField } from "@mui/material";
+import { Divider, Grid, Snackbar, TextField } from "@mui/material";
 import axios from "axios";
 
-import { GRID_SIZE } from "../utils/constants";
+import { BUTTONS_TEXT, GRID_SIZE, SNACKBAR_MSG } from "../utils/constants";
 
 const style = {
   position: "absolute",
@@ -35,9 +35,18 @@ const BlackTextButton = styled(Button)({
 const boxStyle = { m: "16px 8px 0 0" };
 
 const SignUpModal = () => {
-  const [open, setOpen] = React.useState(false);
+  const [open, setOpen] = useState(false);
   const handleOpen = () => setOpen(true);
   const handleClose = () => setOpen(false);
+  const [openSnackBar, setOpenSnackBar] = useState(false);
+  const [snackbarContent, setSnackbarContent] = useState(null);
+
+  const handleCloseSnackBar = (event, reason) => {
+    if (reason === "clickaway") {
+      return;
+    }
+    setOpenSnackBar(false);
+  };
 
   const handleSubmit = (event) => {
     event.preventDefault();
@@ -48,12 +57,15 @@ const SignUpModal = () => {
       password: formData.get("password"),
     };
 
-    axios.post(`http://localhost:3001/auth`, data).then(
+    axios.post(`http://localhost:3001/auth/`, data).then(
       (response) => {
         handleClose(!open);
+        setSnackbarContent(SNACKBAR_MSG.USER_CREATED_SUCCESSFULLY);
+        setOpenSnackBar(true);
       },
       (e) => {
         console.log("Oh no: " + e);
+        setSnackbarContent(SNACKBAR_MSG.ERR_USER_CREATED);
       }
     );
   };
@@ -142,7 +154,7 @@ const SignUpModal = () => {
             color="success"
             type="submit"
           >
-            Sign Up
+            {BUTTONS_TEXT.SIGN_UP}
           </Button>
           <Button
             variant="outlined"
@@ -150,10 +162,16 @@ const SignUpModal = () => {
             color="error"
             onClick={handleClose}
           >
-            Exit
+            {BUTTONS_TEXT.EXIT}
           </Button>
         </Box>
       </Modal>
+      <Snackbar
+        open={openSnackBar}
+        autoHideDuration={3000}
+        onClose={handleCloseSnackBar}
+        message={snackbarContent}
+      />
     </div>
   );
 };

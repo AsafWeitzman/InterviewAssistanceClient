@@ -1,7 +1,6 @@
 import { Typography } from "@mui/material";
-import { Box, Container } from "@mui/system";
+import { Box } from "@mui/system";
 import { Link } from "react-router-dom";
-import { ReactComponent as InterviewManagerLogoAW } from "../assets/svg/InterviewManagerLogoAW.svg";
 
 const backgroundImageUrl = "/Images/prisonMike.png";
 const backgroundImageUrlSmall = "/Images/prisonMikeSM.png";
