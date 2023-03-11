@@ -1,7 +1,7 @@
 import { Divider, Typography } from "@mui/material";
 import { Box } from "@mui/system";
 import { useContext, useEffect, useState } from "react";
-import { VictoryPie } from "victory-pie";
+import { VictoryChart, VictoryAxis, VictoryBar } from "victory";
 
 import { InterviewsContext } from "../context/InterviewsContext";
 import { INTERVIEWS_CATEGORY, STATUSES, TABS } from "../utils/constants";
@@ -38,15 +38,15 @@ const SmallBoxes = ({ title, count }) => {
   );
 };
 
-const TotalPie = ({
+const TotalAxisChart = ({
   numberOfOpenInterviews,
   numberOfClosedInterviews,
   numberOfSuccessfulInterviews,
 }) => {
-  const pieData = [
-    { x: "Open", y: numberOfOpenInterviews },
-    { x: "Closed", y: numberOfClosedInterviews },
-    { x: "Success", y: numberOfSuccessfulInterviews },
+  const data = [
+    { status: "Open", count: numberOfOpenInterviews },
+    { status: "Closed", count: numberOfClosedInterviews },
+    { status: "Success", count: numberOfSuccessfulInterviews },
   ];
 
   return (
@@ -59,26 +59,41 @@ const TotalPie = ({
       >
         Total Processes
       </Typography>
-      <VictoryPie
-        height={330}
-        width={330}
-        padding={16}
-        data={pieData}
-        colorScale={["#F06071", "#FFF4F4", "#D3FBD8"]}
-        style={{
-          labels: {
-            fill: "black",
-          },
-          data: { opacity: 1 },
-        }}
-        innerRadius={68}
-        labelRadius={80}
-      />
+      <VictoryChart domainPadding={20} height={330} width={330}>
+        <VictoryAxis
+          animate={{
+            duration: 2000,
+            easing: "bounce",
+          }}
+          tickValues={[
+            numberOfOpenInterviews,
+            numberOfClosedInterviews,
+            numberOfSuccessfulInterviews,
+          ]}
+          tickFormat={["Open", "Closed", "Success"]}
+          style={{ tickLabels: { fill: "white" }, axis: { stroke: "white" } }}
+        />
+        <VictoryAxis
+          dependentAxis
+          tickFormat={[
+            numberOfOpenInterviews,
+            numberOfClosedInterviews,
+            numberOfSuccessfulInterviews,
+          ]}
+          style={{ tickLabels: { fill: "white" }, axis: { stroke: "white" } }}
+        />
+        <VictoryBar
+          data={data}
+          x="status"
+          y="count"
+          style={{ data: { fill: "#59b8bb", width: 30 } }}
+        />
+      </VictoryChart>
     </div>
   );
 };
 
-const OpenInterviewsStatusPie = () => {
+const OpenInterviewsStatusAxisChart = () => {
   const { listOfInterviews } = useContext(InterviewsContext);
   const [appliedNumber, setAppliedNumber] = useState(0);
   const [inProgressNumber, setInProgressNumber] = useState(0);
@@ -102,10 +117,10 @@ const OpenInterviewsStatusPie = () => {
     );
   }, []);
 
-  const pieData = [
-    { x: STATUSES.APPLIED, y: appliedNumber },
-    { x: STATUSES.IN_PROGRESS, y: inProgressNumber },
-    { x: STATUSES.OFFER, y: offerNumber },
+  const data = [
+    { status: STATUSES.APPLIED, count: appliedNumber },
+    { status: STATUSES.IN_PROGRESS, count: inProgressNumber },
+    { status: STATUSES.OFFER, count: offerNumber },
   ];
 
   return (
@@ -118,25 +133,29 @@ const OpenInterviewsStatusPie = () => {
       >
         Open Processes (Status)
       </Typography>
-      <VictoryPie
-        height={330}
-        width={330}
-        padding={16}
-        data={pieData}
-        colorScale={["#ACABAB", "#00ADAD", "#D3FBD8"]}
-        style={{
-          labels: {
-            fill: "black",
-          },
-        }}
-        innerRadius={68}
-        labelRadius={80}
-      />
+      <VictoryChart domainPadding={20} height={330} width={330}>
+        <VictoryAxis
+          tickValues={[appliedNumber, inProgressNumber, offerNumber]}
+          tickFormat={["Applied", "In Progress", "Offer"]}
+          style={{ tickLabels: { fill: "white" }, axis: { stroke: "white" } }}
+        />
+        <VictoryAxis
+          dependentAxis
+          tickFormat={[appliedNumber, inProgressNumber, offerNumber]}
+          style={{ tickLabels: { fill: "white" }, axis: { stroke: "white" } }}
+        />
+        <VictoryBar
+          data={data}
+          x="status"
+          y="count"
+          style={{ data: { fill: "#ed264f", width: 30 } }}
+        />
+      </VictoryChart>
     </div>
   );
 };
 
-const ClosedInterviewsStatusPie = () => {
+const ClosedInterviewsStatusAxisChart = () => {
   const { listOfInterviews } = useContext(InterviewsContext);
   const [endedGoodNumber, setEndedGoodNumber] = useState(0);
   const [endedBadNumber, setEndedBadNumber] = useState(0);
@@ -154,9 +173,9 @@ const ClosedInterviewsStatusPie = () => {
     );
   }, []);
 
-  const pieData = [
-    { x: STATUSES.ENDED_GOOD, y: endedGoodNumber },
-    { x: STATUSES.ENDED_BAD, y: endedBadNumber },
+  const data = [
+    { status: STATUSES.ENDED_GOOD, count: endedGoodNumber },
+    { status: STATUSES.ENDED_BAD, count: endedBadNumber },
   ];
 
   return (
@@ -169,20 +188,24 @@ const ClosedInterviewsStatusPie = () => {
       >
         Cloed Processes (Status)
       </Typography>
-      <VictoryPie
-        height={330}
-        width={330}
-        padding={16}
-        data={pieData}
-        colorScale={["#FDEDF1", "#AE7384"]}
-        style={{
-          labels: {
-            fill: "black",
-          },
-        }}
-        innerRadius={68}
-        labelRadius={80}
-      />
+      <VictoryChart domainPadding={20} height={330} width={330}>
+        <VictoryAxis
+          tickValues={[endedGoodNumber, endedBadNumber]}
+          tickFormat={[STATUSES.ENDED_GOOD, STATUSES.ENDED_BAD]}
+          style={{ tickLabels: { fill: "white" }, axis: { stroke: "white" } }}
+        />
+        <VictoryAxis
+          dependentAxis
+          tickFormat={[endedGoodNumber, endedBadNumber]}
+          style={{ tickLabels: { fill: "white" }, axis: { stroke: "white" } }}
+        />
+        <VictoryBar
+          data={data}
+          x="status"
+          y="count"
+          style={{ data: { fill: "#ffca85", width: 30 } }}
+        />
+      </VictoryChart>
     </div>
   );
 };
@@ -250,13 +273,13 @@ const Statistics = () => {
       <Box
         sx={{ display: "flex", alignItems: "center", justifyContent: "center" }}
       >
-        <TotalPie
+        <TotalAxisChart
           numberOfOpenInterviews={numberOfOpenInterviews}
           numberOfClosedInterviews={numberOfClosedInterviews}
           numberOfSuccessfulInterviews={numberOfSuccessfulInterviews}
         />
-        <OpenInterviewsStatusPie />
-        <ClosedInterviewsStatusPie />
+        <OpenInterviewsStatusAxisChart />
+        <ClosedInterviewsStatusAxisChart />
       </Box>
     </Box>
   );
