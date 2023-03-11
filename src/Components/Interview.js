@@ -12,7 +12,7 @@ import { Grid } from "@mui/material";
 import { motion } from "framer-motion";
 
 import RetroCard from "./RetroCard";
-import { RETRO_TITLES } from "../utils/constants";
+import { GRID_SIZE, RETRO_TITLES } from "../utils/constants";
 
 const ExpandMore = styled((props) => {
   const { expand, ...other } = props;
@@ -32,9 +32,7 @@ const Interview = () => {
   const {
     companyName,
     jobTitle,
-    step,
     dateAndTime,
-    status,
     comment,
     whatWentWell,
     whatCanBeImproved,
@@ -92,28 +90,52 @@ const Interview = () => {
       <Collapse in={expanded} timeout="auto" unmountOnExit>
         <CardContent>
           <Grid container spacing={2}>
-            <Grid item lg={3} md={3} sm={3} xs={3}>
+            <Grid
+              item
+              lg={GRID_SIZE.SMALL_LENGTH}
+              md={GRID_SIZE.SMALL_LENGTH}
+              sm={GRID_SIZE.SMALL_LENGTH}
+              xs={GRID_SIZE.SMALL_LENGTH}
+            >
               <RetroCard
                 retroTitle={RETRO_TITLES.COMMENT}
                 content={comment ? comment : "-"}
               />
             </Grid>
 
-            <Grid item lg={3} md={3} sm={3} xs={3}>
+            <Grid
+              item
+              lg={GRID_SIZE.SMALL_LENGTH}
+              md={GRID_SIZE.SMALL_LENGTH}
+              sm={GRID_SIZE.SMALL_LENGTH}
+              xs={GRID_SIZE.SMALL_LENGTH}
+            >
               <RetroCard
                 retroTitle={RETRO_TITLES.WHAT_WENT_WELL}
                 content={whatWentWell ? whatWentWell : "-"}
               />
             </Grid>
 
-            <Grid item lg={3} md={3} sm={3} xs={3}>
+            <Grid
+              item
+              lg={GRID_SIZE.SMALL_LENGTH}
+              md={GRID_SIZE.SMALL_LENGTH}
+              sm={GRID_SIZE.SMALL_LENGTH}
+              xs={GRID_SIZE.SMALL_LENGTH}
+            >
               <RetroCard
                 retroTitle={RETRO_TITLES.WHAT_CAN_BE_IMPROVED}
                 content={whatCanBeImproved ? whatCanBeImproved : "-"}
               />
             </Grid>
 
-            <Grid item lg={3} md={3} sm={3} xs={3}>
+            <Grid
+              item
+              lg={GRID_SIZE.SMALL_LENGTH}
+              md={GRID_SIZE.SMALL_LENGTH}
+              sm={GRID_SIZE.SMALL_LENGTH}
+              xs={GRID_SIZE.SMALL_LENGTH}
+            >
               <RetroCard
                 retroTitle={RETRO_TITLES.ACTION_ITEMS}
                 content={actionItems ? actionItems : "-"}

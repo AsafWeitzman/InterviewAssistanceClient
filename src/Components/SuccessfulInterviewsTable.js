@@ -1,7 +1,8 @@
 import { Typography } from "@mui/material";
 import { divStyleBackgroundImageHexagon } from "../style/backgroundImageDivStyle";
+import { FONT_FAMILY, FONT_WEIGHT } from "../style/textStyle";
 
-import { STATUSES } from "../utils/constants";
+import { INTERVIEWS_CATEGORY, STATUSES } from "../utils/constants";
 import InterviewsAccordion from "./InterviewsAccordion";
 
 const SuccessfulInterviewsTable = () => {
@@ -12,11 +13,11 @@ const SuccessfulInterviewsTable = () => {
         sx={{
           m: "16px",
           textAlign: "center",
-          fontFamily: "monospace",
-          fontWeight: 600,
+          fontFamily: FONT_FAMILY.MONOSPACE,
+          fontWeight: FONT_WEIGHT.MEDIUM,
         }}
       >
-        Successful Interviews
+        {INTERVIEWS_CATEGORY.SUCCESSFUL_INTERVIEWS}
       </Typography>
       <InterviewsAccordion
         endedStatus={STATUSES.ENDED_GOOD}

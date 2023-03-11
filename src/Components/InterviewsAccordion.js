@@ -58,7 +58,11 @@ const InterviewsAccordion = ({ endedStatus, style }) => {
               </AccordionSummary>
               <AccordionDetails>
                 <div
-                  style={{ display: "flex", flexDirection: "row", gap: "8px" }}
+                  style={{
+                    display: "flex",
+                    flexDirection: "row",
+                    gap: "8px",
+                  }}
                 >
                   <DeleteRowModal
                     interviewId={interview.id}
@@ -79,7 +83,10 @@ const InterviewsAccordion = ({ endedStatus, style }) => {
                 >
                   <Grid item xs={12} sm={12} md={12} lg={12}>
                     <div
-                      style={{ ...divStyle, borderRadius: "16px 16px 0px 0px" }}
+                      style={{
+                        ...divStyle,
+                        borderRadius: "16px 16px 0px 0px",
+                      }}
                     >
                       <Typography variant="h6">Comment</Typography>
                       <Divider sx={{ mb: "8px" }} />
@@ -95,7 +102,10 @@ const InterviewsAccordion = ({ endedStatus, style }) => {
                   </Grid>
                   <Grid item xs={4} sm={4} md={4} lg={4}>
                     <div
-                      style={{ ...divStyle, borderRadius: "16px 16px 0px 0px" }}
+                      style={{
+                        ...divStyle,
+                        borderRadius: "16px 16px 0px 0px",
+                      }}
                     >
                       <Typography variant="h6">What Can Be Improved</Typography>
                       <Divider sx={{ mb: "8px" }} />
@@ -120,7 +130,10 @@ const InterviewsAccordion = ({ endedStatus, style }) => {
                 >
                   <Grid item xs={12} sm={12} md={12} lg={12}>
                     <div
-                      style={{ ...divStyle, borderRadius: "16px 16px 0px 0px" }}
+                      style={{
+                        ...divStyle,
+                        borderRadius: "16px 16px 0px 0px",
+                      }}
                     >
                       <Typography variant="h6">Comment</Typography>
                       <Divider sx={{ mb: "8px" }} />
@@ -149,7 +162,10 @@ const InterviewsAccordion = ({ endedStatus, style }) => {
                   </Grid>
                   <Grid item xs={12} sm={12} md={12} lg={12}>
                     <div
-                      style={{ ...divStyle, borderRadius: "0px 0px 16px 16px" }}
+                      style={{
+                        ...divStyle,
+                        borderRadius: "0px 0px 16px 16px",
+                      }}
                     >
                       <Typography variant="h6">Action Items</Typography>
                       <Divider sx={{ mb: "8px" }} />

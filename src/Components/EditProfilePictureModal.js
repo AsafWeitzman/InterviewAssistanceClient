@@ -10,6 +10,7 @@ import axios from "axios";
 import { grey } from "@mui/material/colors";
 
 import { AuthContext } from "../context/AuthContext";
+import { BUTTONS_TEXT } from "../utils/constants";
 
 const style = {
   position: "absolute",
@@ -162,7 +163,7 @@ export default function EditProfilePictureModal() {
             color="success"
             type="submit"
           >
-            Save
+            {BUTTONS_TEXT.SAVE}
           </Button>
           <Button
             variant="outlined"
@@ -170,7 +171,7 @@ export default function EditProfilePictureModal() {
             color="error"
             onClick={handleExit}
           >
-            Exit
+            {BUTTONS_TEXT.EXIT}
           </Button>
         </Box>
       </Modal>

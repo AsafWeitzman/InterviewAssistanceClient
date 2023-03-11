@@ -16,6 +16,7 @@ import { motion } from "framer-motion";
 
 import { AuthContext } from "../context/AuthContext";
 import { ReactComponent as Logo55X40 } from "../assets/svg/Logo55X40.svg";
+import { FONT_FAMILY, FONT_WEIGHT } from "../style/textStyle";
 
 const pages = ["Open Processes", "Closed Processes", "Successful Processes"];
 const goTo = (page) => {
@@ -91,8 +92,8 @@ function ResponsiveAppBar() {
             sx={{
               mr: 2,
               display: { xs: "none", md: "flex" },
-              fontFamily: "monospace",
-              fontWeight: 700,
+              fontFamily: FONT_FAMILY.MONOSPACE,
+              fontWeight: FONT_WEIGHT.LARGE,
               color: "inherit",
               textDecoration: "none",
             }}
@@ -160,8 +161,8 @@ function ResponsiveAppBar() {
               mr: 2,
               display: { xs: "flex", md: "none" },
               flexGrow: 1,
-              fontFamily: "monospace",
-              fontWeight: 500,
+              fontFamily: FONT_FAMILY.MONOSPACE,
+              fontWeight: FONT_WEIGHT.SMALL,
               color: "inherit",
               textDecoration: "none",
             }}

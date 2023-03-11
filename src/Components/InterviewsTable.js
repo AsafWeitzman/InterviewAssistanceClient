@@ -22,6 +22,7 @@ import { RETRO_TITLES_2, STATUSES } from "../utils/constants";
 import { InterviewsContext } from "../context/InterviewsContext";
 import { divStyleBackgroundImageHexagon } from "../style/backgroundImageDivStyle";
 import { Divider } from "@mui/material";
+import { FONT_FAMILY, FONT_WEIGHT } from "../style/textStyle";
 
 const RetroBoxes = ({ title, content }) => {
   return (
@@ -146,8 +147,8 @@ const InterviewsTable = () => {
         sx={{
           m: "16px",
           textAlign: "center",
-          fontFamily: "monospace",
-          fontWeight: 600,
+          fontFamily: FONT_FAMILY.MONOSPACE,
+          fontWeight: FONT_WEIGHT.MEDIUM,
         }}
       >
         Open Interviews
