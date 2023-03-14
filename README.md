@@ -1,10 +1,13 @@
 # Interview Manager App
 
 This project is designed to help job seekers manage their interview processes more efficiently. It allows users to track their interviews and organize them in one place, making it easier to stay on top of their job search. With this tool, job seekers can keep track of the details of each interview, such as the date, time, and conclusions, as well as the status of their application. By using this project, job seekers can streamline their job search process and focus on finding the right opportunity.
+[Click here to watch a demo of the project](https://youtu.be/N8MlOQdm2wo)
 
 ## Tech
 
 The project was built using a range of modern web technologies, including HTML, CSS, and JavaScript, as well as several popular libraries and frameworks. The frontend of the application was built using React.js, which provides a robust set of tools for building user interfaces. Additionally, the application uses the Framer Motion library for smooth animations, Material UI for styling and components, and the Victory Chart library for data visualization. To manage state and pass data between components, the project uses React Context API. For routing, the project uses React Router. These technologies work together to deliver a responsive and efficient user experience, while also providing a solid foundation for future development.
+
+Backend - https://github.com/AsafWeitzman/InterviewAssistanceServer
 
 ## Contact Information
 
