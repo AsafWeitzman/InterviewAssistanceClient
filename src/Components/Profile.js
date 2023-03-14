@@ -91,7 +91,6 @@ const Profile = () => {
           variant="scrollable"
           value={value}
           onChange={handleChange}
-          aria-label="Vertical tabs example"
           sx={{
             borderRight: 1,
             borderColor: "divider",
@@ -101,7 +100,7 @@ const Profile = () => {
           <Tab label={TABS.INTERVIEWS_SCHEDULE} {...a11yProps(1)} />
           <Tab label={TABS.SETTINGS} {...a11yProps(2)} />
         </Tabs>
-        <TabPanel value={value} index={0}>
+        <TabPanel value={value} index={0} style={{ width: "70%" }}>
           <Box
             component={motion.div}
             initial="hidden"

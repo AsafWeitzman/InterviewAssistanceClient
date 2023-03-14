@@ -109,6 +109,7 @@ export default function EditNameModal() {
                   label="User Name"
                   name="userName"
                   autoComplete="off"
+                  inputProps={{ maxLength: 30 }}
                   defaultValue={authState.userName}
                 />
               </Box>

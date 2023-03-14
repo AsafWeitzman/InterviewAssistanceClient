@@ -241,7 +241,7 @@ const Statistics = () => {
   }, []);
 
   return (
-    <Box>
+    <>
       <Typography
         variant="h4"
         sx={{
@@ -251,37 +251,95 @@ const Statistics = () => {
         {TABS.STATISTICS}
       </Typography>
       <Divider sx={{ mb: "8px" }} />
-      <Box sx={{ display: "flex", justifyContent: "space-between" }}>
-        <SmallBoxes
-          title={INTERVIEWS_CATEGORY.TOTAL_INTERVIEWS}
-          count={numberOfTotalInterviews}
-        />
-        <SmallBoxes
-          title={INTERVIEWS_CATEGORY.OPEN_INTERVIEWS}
-          count={numberOfOpenInterviews}
-        />
-        <SmallBoxes
-          title={INTERVIEWS_CATEGORY.CLOSED_INTERVIEWS}
-          count={numberOfClosedInterviews}
-        />
-        <SmallBoxes
-          title={INTERVIEWS_CATEGORY.SUCCESSFUL_INTERVIEWS}
-          count={numberOfSuccessfulInterviews}
-        />
-      </Box>
-      <Divider sx={{ m: "8px 0 8px 0" }} />
       <Box
-        sx={{ display: "flex", alignItems: "center", justifyContent: "center" }}
+        sx={{
+          display: { md: "flex", sm: "none", xs: "none" },
+          flexDirection: "column",
+        }}
       >
-        <TotalAxisChart
-          numberOfOpenInterviews={numberOfOpenInterviews}
-          numberOfClosedInterviews={numberOfClosedInterviews}
-          numberOfSuccessfulInterviews={numberOfSuccessfulInterviews}
-        />
-        <OpenInterviewsStatusAxisChart />
-        <ClosedInterviewsStatusAxisChart />
+        <Box sx={{ display: "flex", justifyContent: "space-between" }}>
+          <SmallBoxes
+            title={INTERVIEWS_CATEGORY.TOTAL_INTERVIEWS}
+            count={numberOfTotalInterviews}
+          />
+          <SmallBoxes
+            title={INTERVIEWS_CATEGORY.OPEN_INTERVIEWS}
+            count={numberOfOpenInterviews}
+          />
+          <SmallBoxes
+            title={INTERVIEWS_CATEGORY.CLOSED_INTERVIEWS}
+            count={numberOfClosedInterviews}
+          />
+          <SmallBoxes
+            title={INTERVIEWS_CATEGORY.SUCCESSFUL_INTERVIEWS}
+            count={numberOfSuccessfulInterviews}
+          />
+        </Box>
+        <Divider sx={{ m: "8px 0 8px 0" }} />
+        <Box
+          sx={{
+            display: "flex",
+            alignItems: "center",
+            justifyContent: "center",
+          }}
+        >
+          <TotalAxisChart
+            numberOfOpenInterviews={numberOfOpenInterviews}
+            numberOfClosedInterviews={numberOfClosedInterviews}
+            numberOfSuccessfulInterviews={numberOfSuccessfulInterviews}
+          />
+          <OpenInterviewsStatusAxisChart />
+          <ClosedInterviewsStatusAxisChart />
+        </Box>
       </Box>
-    </Box>
+      <Box
+        sx={{
+          display: { md: "none", sm: "flex", xs: "flex" },
+          flexDirection: "column",
+        }}
+      >
+        <Box
+          sx={{
+            display: "flex",
+            flexDirection: "column",
+          }}
+        >
+          <SmallBoxes
+            title={INTERVIEWS_CATEGORY.TOTAL_INTERVIEWS}
+            count={numberOfTotalInterviews}
+          />
+          <SmallBoxes
+            title={INTERVIEWS_CATEGORY.OPEN_INTERVIEWS}
+            count={numberOfOpenInterviews}
+          />
+          <SmallBoxes
+            title={INTERVIEWS_CATEGORY.CLOSED_INTERVIEWS}
+            count={numberOfClosedInterviews}
+          />
+          <SmallBoxes
+            title={INTERVIEWS_CATEGORY.SUCCESSFUL_INTERVIEWS}
+            count={numberOfSuccessfulInterviews}
+          />
+        </Box>
+        <Divider sx={{ m: "8px 0 8px 0" }} />
+        <Box
+          sx={{
+            display: "flex",
+            alignItems: "center",
+            justifyContent: "center",
+            flexDirection: "column",
+          }}
+        >
+          <TotalAxisChart
+            numberOfOpenInterviews={numberOfOpenInterviews}
+            numberOfClosedInterviews={numberOfClosedInterviews}
+            numberOfSuccessfulInterviews={numberOfSuccessfulInterviews}
+          />
+          <OpenInterviewsStatusAxisChart />
+          <ClosedInterviewsStatusAxisChart />
+        </Box>
+      </Box>
+    </>
   );
 };
 export default Statistics;

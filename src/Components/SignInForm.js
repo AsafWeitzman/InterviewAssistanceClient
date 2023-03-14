@@ -1,4 +1,4 @@
-import { Container, Grid, Link } from "@mui/material";
+import { Container } from "@mui/material";
 import { Box } from "@mui/system";
 import axios from "axios";
 import { useContext, useState } from "react";
@@ -12,7 +12,7 @@ import { InterviewsContext } from "../context/InterviewsContext";
 const SignInForm = () => {
   const [emailValue, setEmailValue] = useState("");
   const [passwordValue, setPasswordValue] = useState("");
-  const { authState, setAuthState } = useContext(AuthContext);
+  const { setAuthState } = useContext(AuthContext);
   const { fetchDataToggle, setFetchDataToggle } = useContext(InterviewsContext);
 
   const resetValues = () => {
@@ -80,6 +80,7 @@ const SignInForm = () => {
             label="Email Address"
             name="email"
             autoComplete="off"
+            inputProps={{ maxLength: 50 }}
             select={false}
             onChange={(e) => {
               setEmailValue(e.target.value);
@@ -95,6 +96,7 @@ const SignInForm = () => {
             type="password"
             id="password"
             autoComplete="current-password"
+            inputProps={{ maxLength: 30 }}
             onChange={(e) => {
               setPasswordValue(e.target.value);
             }}

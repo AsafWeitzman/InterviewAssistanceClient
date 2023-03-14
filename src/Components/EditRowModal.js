@@ -143,6 +143,7 @@ export default function EditRowModal({ interviewRow }) {
                   label="Company Name"
                   name="companyName"
                   autoComplete="off"
+                  inputProps={{ maxLength: 30 }}
                   defaultValue={companyName && companyName}
                 />
               </Box>
@@ -162,6 +163,7 @@ export default function EditRowModal({ interviewRow }) {
                   label="Job Title"
                   name="jobTitle"
                   autoComplete="off"
+                  inputProps={{ maxLength: 30 }}
                   defaultValue={jobTitle && jobTitle}
                 />
               </Box>
@@ -249,6 +251,7 @@ export default function EditRowModal({ interviewRow }) {
                   label="Comment"
                   name="comment"
                   autoComplete="off"
+                  inputProps={{ maxLength: 100 }}
                   defaultValue={comment && comment}
                 />
               </Box>
@@ -268,6 +271,7 @@ export default function EditRowModal({ interviewRow }) {
                   label="What Went Well?"
                   name="whatWentWell"
                   autoComplete="off"
+                  inputProps={{ maxLength: 100 }}
                   defaultValue={whatWentWell && whatWentWell}
                 />
               </Box>
@@ -286,6 +290,7 @@ export default function EditRowModal({ interviewRow }) {
                   id="whatCanBeImprovedEdit"
                   label="What Can Be Improved?"
                   name="whatCanBeImproved"
+                  inputProps={{ maxLength: 100 }}
                   autoComplete="off"
                   defaultValue={whatCanBeImproved && whatCanBeImproved}
                 />
@@ -306,6 +311,7 @@ export default function EditRowModal({ interviewRow }) {
                   label="Action Items"
                   name="actionItems"
                   autoComplete="off"
+                  inputProps={{ maxLength: 100 }}
                   defaultValue={actionItems && actionItems}
                 />
               </Box>

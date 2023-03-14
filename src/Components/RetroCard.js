@@ -1,4 +1,4 @@
-import { Box, Container, Typography } from "@mui/material";
+import { Box, Container, Divider, Typography } from "@mui/material";
 import { motion } from "framer-motion";
 
 import { ReactComponent as CommentIcon } from "../assets/svg/CommentIcon.svg";
@@ -13,32 +13,46 @@ const boxStyle = {
   flexDirection: "column",
   alignItems: "center",
   background: "rgba(255,255,255,0.6)",
+
   borderRadius: "8px 40px",
   p: 1,
   mt: 2,
   mb: 2,
   boxShadow: "0 8px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19)",
   minHeight: "330px",
+  width: "100%",
   transition: "width 2s, height 4s",
 };
 
+const smXsboxStyle = {
+  background: "rgba(255,255,255,0.6)",
+  borderRadius: "16px",
+  mt: 2,
+  mb: 2,
+  boxShadow: "0 8px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19)",
+  transition: "width 2s, height 4s",
+  width: "100%",
+};
+
 const containerStyle = {
-  backgroundImage: `linear-gradient(to bottom, #474554, #ACA9BB)`,
-  padding: "4px 0 4px 0",
+  backgroundImage: `linear-gradient(to bottom, #121212, #453242)`,
   borderRadius: "16px",
 };
 
 const iconStyle = {
-  display: { xs: "none", md: "flex" },
+  display: "flex",
   padding: "16px 0px 24px 0px",
-  width: "80%",
-  height: "80%",
+  width: "100%",
+  height: "100%",
 };
 
 const IconMotion = ({ children }) => {
   return (
     <motion.div
-      style={{ display: "flex", justifyContent: "center" }}
+      style={{
+        display: "flex",
+        alignItems: "center",
+      }}
       initial={{ scale: 0 }}
       animate={{ rotate: 360, scale: 1 }}
       transition={{
@@ -83,31 +97,69 @@ const RetroIcon = ({ retroTitle, style }) => {
 
 export default function RetroCard({ retroTitle, content }) {
   return (
-    <Container sx={containerStyle}>
-      <Box
-        sx={boxStyle}
-        component={motion.div}
-        whileHover={{
-          scale: 1.02,
-          transition: { duration: 0.3 },
+    <>
+      <Container
+        sx={{
+          ...containerStyle,
+          display: { md: "flex", sm: "none", xs: "none" },
         }}
       >
-        <RetroIcon retroTitle={retroTitle} style={iconStyle} />
-
-        <Typography
-          variant="h5"
-          sx={{ color: "black", m: "16px 8px 8px 8px", textAlign: "center" }}
+        <Box
+          sx={boxStyle}
+          component={motion.div}
+          whileHover={{
+            scale: 1.02,
+            transition: { duration: 0.3 },
+          }}
         >
-          {retroTitle}
-        </Typography>
+          <RetroIcon retroTitle={retroTitle} style={iconStyle} />
 
-        <Typography
-          paragraph
-          sx={{ color: "black", m: "0px 8px 8px 8px", textAlign: "center" }}
+          <Typography
+            variant="h5"
+            sx={{ color: "black", m: "16px 8px 8px 8px", textAlign: "center" }}
+          >
+            {retroTitle}
+          </Typography>
+
+          <Typography
+            paragraph
+            sx={{ color: "black", m: "0px 8px 8px 8px", textAlign: "center" }}
+          >
+            {content ? content : "-"}
+          </Typography>
+        </Box>
+      </Container>
+      <Container
+        sx={{
+          ...containerStyle,
+          display: { md: "none", sm: "flex", xs: "flex" },
+        }}
+      >
+        <Box
+          sx={{
+            ...smXsboxStyle,
+          }}
+          component={motion.div}
+          whileHover={{
+            scale: 1.02,
+            transition: { duration: 0.3 },
+          }}
         >
-          {content ? content : "-"}
-        </Typography>
-      </Box>
-    </Container>
+          <Typography
+            variant="h6"
+            sx={{
+              color: "black",
+              m: "8px",
+            }}
+          >
+            {retroTitle}
+          </Typography>
+          <Divider sx={{ m: "0 8px 8px 8px", backgroundColor: "black" }} />
+          <Typography paragraph sx={{ color: "black", m: "8px 16px" }}>
+            {content ? content : "-"}
+          </Typography>
+        </Box>
+      </Container>
+    </>
   );
 }

@@ -156,6 +156,7 @@ const AddInterview = ({ style }) => {
                     label="Company Name"
                     name="companyName"
                     autoComplete="off"
+                    inputProps={{ maxLength: 30 }}
                     onChange={(e) => {
                       setCompanyNameValue(e.target.value);
                     }}
@@ -178,6 +179,7 @@ const AddInterview = ({ style }) => {
                     label="Job Title"
                     name="jobTitle"
                     autoComplete="off"
+                    inputProps={{ maxLength: 30 }}
                     onChange={(e) => {
                       setJobTitleValue(e.target.value);
                     }}

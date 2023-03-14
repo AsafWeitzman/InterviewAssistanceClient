@@ -105,6 +105,7 @@ const SignUpModal = () => {
                   id="userName"
                   label="User Name"
                   name="userName"
+                  inputProps={{ maxLength: 30 }}
                 />
               </Box>
             </Grid>
@@ -124,6 +125,7 @@ const SignUpModal = () => {
                   id="email"
                   label="Email"
                   name="email"
+                  inputProps={{ maxLength: 50 }}
                 />
               </Box>
             </Grid>
@@ -142,6 +144,7 @@ const SignUpModal = () => {
                   id="password"
                   label="Password"
                   name="password"
+                  inputProps={{ maxLength: 30 }}
                 />
               </Box>
             </Grid>
