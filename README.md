@@ -8,4 +8,4 @@ The project was built using a range of modern web technologies, including HTML, 
 
 ## Contact Information
 
-If you have any questions or feedback about this project, please feel free to contact me. You can reach me at [asafweit1@gmail.com]. You can also check out my LinkedIn profile [https://www.linkedin.com/in/asaf-weitzman-b18354122/], where you can learn more about my professional experience and connect with me.
+If you have any questions or feedback about this project, please feel free to contact me. You can reach me at asafweit1@gmail.com. You can also check out my LinkedIn profile https://www.linkedin.com/in/asaf-weitzman-b18354122/, where you can learn more about my professional experience and connect with me.
