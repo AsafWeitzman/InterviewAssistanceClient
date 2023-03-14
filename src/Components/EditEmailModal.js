@@ -109,6 +109,7 @@ export default function EditEmailModal() {
                   label="Email"
                   name="email"
                   autoComplete="off"
+                  inputProps={{ maxLength: 50 }}
                   defaultValue={authState.email}
                 />
               </Box>

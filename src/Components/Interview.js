@@ -70,7 +70,7 @@ const Interview = () => {
     >
       <CardHeader
         sx={{
-          backgroundImage: `linear-gradient(to bottom right, #1E1E1E, #474554)`,
+          backgroundImage: `linear-gradient(to bottom right, #121212,#453242)`,
         }}
         title={`${jobTitle} Interview (${companyName})`}
         subheader={dateAndTime && ts.toLocaleString()}
@@ -89,7 +89,11 @@ const Interview = () => {
       />
       <Collapse in={expanded} timeout="auto" unmountOnExit>
         <CardContent>
-          <Grid container spacing={2}>
+          <Grid
+            container
+            spacing={2}
+            sx={{ display: { md: "flex", sm: "none", xs: "none" } }}
+          >
             <Grid
               item
               lg={GRID_SIZE.SMALL_LENGTH}
@@ -135,6 +139,63 @@ const Interview = () => {
               md={GRID_SIZE.SMALL_LENGTH}
               sm={GRID_SIZE.SMALL_LENGTH}
               xs={GRID_SIZE.SMALL_LENGTH}
+            >
+              <RetroCard
+                retroTitle={RETRO_TITLES.ACTION_ITEMS}
+                content={actionItems ? actionItems : "-"}
+              />
+            </Grid>
+          </Grid>
+          <Grid
+            container
+            spacing={2}
+            sx={{ display: { md: "none", sm: "flex", xs: "flex" } }}
+          >
+            <Grid
+              item
+              lg={GRID_SIZE.LARGE_LENGTH}
+              md={GRID_SIZE.LARGE_LENGTH}
+              sm={GRID_SIZE.LARGE_LENGTH}
+              xs={GRID_SIZE.LARGE_LENGTH}
+            >
+              <RetroCard
+                retroTitle={RETRO_TITLES.COMMENT}
+                content={comment ? comment : "-"}
+              />
+            </Grid>
+
+            <Grid
+              item
+              lg={GRID_SIZE.LARGE_LENGTH}
+              md={GRID_SIZE.LARGE_LENGTH}
+              sm={GRID_SIZE.LARGE_LENGTH}
+              xs={GRID_SIZE.LARGE_LENGTH}
+            >
+              <RetroCard
+                retroTitle={RETRO_TITLES.WHAT_WENT_WELL}
+                content={whatWentWell ? whatWentWell : "-"}
+              />
+            </Grid>
+
+            <Grid
+              item
+              lg={GRID_SIZE.LARGE_LENGTH}
+              md={GRID_SIZE.LARGE_LENGTH}
+              sm={GRID_SIZE.LARGE_LENGTH}
+              xs={GRID_SIZE.LARGE_LENGTH}
+            >
+              <RetroCard
+                retroTitle={RETRO_TITLES.WHAT_CAN_BE_IMPROVED}
+                content={whatCanBeImproved ? whatCanBeImproved : "-"}
+              />
+            </Grid>
+
+            <Grid
+              item
+              lg={GRID_SIZE.LARGE_LENGTH}
+              md={GRID_SIZE.LARGE_LENGTH}
+              sm={GRID_SIZE.LARGE_LENGTH}
+              xs={GRID_SIZE.LARGE_LENGTH}
             >
               <RetroCard
                 retroTitle={RETRO_TITLES.ACTION_ITEMS}
